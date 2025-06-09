@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompShopSys.Helper
+namespace TechShopMS.Helper
 {
     public class StatusToColorConverter : IValueConverter
     {

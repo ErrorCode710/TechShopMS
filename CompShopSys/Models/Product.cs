@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Avalonia.Media.Imaging;
-using CompShopSys.Helper;
+using TechShopMS.Helper;
 using Avalonia.Platform;
 using Path = System.IO.Path;
 
-namespace CompShopSys.Models
+namespace TechShopMS.Models
 {
     public class Product
     {
@@ -24,7 +24,7 @@ namespace CompShopSys.Models
         public string Brand { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-        public string ImageResourcePath => $"avares://CompShopSys/Assets/Images/{ImagePath}";
+        public string ImageResourcePath => $"avares://TechShopMS/Assets/Images/{ImagePath}";
 
         public decimal Price { get; set; }
         public int Quantity { get; set; }

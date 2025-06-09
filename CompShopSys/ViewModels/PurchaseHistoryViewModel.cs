@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using CompShopSys.Models;
-using CompShopSys.Services;
+using TechShopMS.Models;
+using TechShopMS.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompShopSys.ViewModels
+namespace TechShopMS.ViewModels
 {
     public partial class PurchaseHistoryViewModel : ViewModelBase
     {

@@ -4,11 +4,11 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using CompShopSys.ViewModels;
-using CompShopSys.Views;
+using TechShopMS.ViewModels;
+using TechShopMS.Views;
 using SQLitePCL;
 
-namespace CompShopSys;
+namespace TechShopMS;
 
 public partial class App : Application
 {

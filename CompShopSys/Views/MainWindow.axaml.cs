@@ -1,9 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Styling;
-using CompShopSys.ViewModels;
+using TechShopMS.ViewModels;
 using FluentAvalonia.UI.Windowing;
 
-namespace CompShopSys.Views;
+namespace TechShopMS.Views;
 
 public partial class MainWindow : AppWindow
 {

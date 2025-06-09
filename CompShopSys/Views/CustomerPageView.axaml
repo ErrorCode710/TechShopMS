@@ -3,9 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:viewmodels="clr-namespace:CompShopSys.ViewModels"
+             xmlns:viewmodels="clr-namespace:TechShopMS.ViewModels"
              x:DataType="viewmodels:CustomerPageViewModel"
-             x:Class="CompShopSys.Views.CustomerPageView"
+             x:Class="TechShopMS.Views.CustomerPageView"
              xmlns:fa="using:FluentAvalonia.UI.Controls">
 
 	<!-- Styles remain the same -->

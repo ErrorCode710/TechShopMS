@@ -1,8 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="CompShopSys.App"
-             xmlns:local="using:CompShopSys"
-			 xmlns:helper="clr-namespace:CompShopSys.Helper"
+             x:Class="TechShopMS.App"
+             xmlns:local="using:TechShopMS"
+			 xmlns:helper="clr-namespace:TechShopMS.Helper"
 			 xmlns:sty="using:FluentAvalonia.Styling"
              RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
@@ -39,10 +39,10 @@
 		<SolidColorBrush x:Key="TitleBarButtonBackgroundPressed" Color="#55FFFFFF"/>
 		
 	
-	    <FontFamily x:Key="DmRegular">avares://CompShopSys/Assets/Fonts/DMSans-Regular.ttf#DM Sans</FontFamily>
-		<FontFamily x:Key="DmMedium">avares://CompShopSys/Assets/Fonts/DMSans-Medium.ttf#DM Sans</FontFamily>
-		<FontFamily x:Key="DmSemiBold">avares://CompShopSys/Assets/Fonts/DMSans-SemiBold.ttf#DM Sans</FontFamily>
-		<FontFamily x:Key="DmBold">avares://CompShopSys/Assets/Fonts/DMSans-Bold.ttf#DM Sans</FontFamily>
+	    <FontFamily x:Key="DmRegular">avares://TechShopMS/Assets/Fonts/DMSans-Regular.ttf#DM Sans</FontFamily>
+		<FontFamily x:Key="DmMedium">avares://TechShopMS/Assets/Fonts/DMSans-Medium.ttf#DM Sans</FontFamily>
+		<FontFamily x:Key="DmSemiBold">avares://TechShopMS/Assets/Fonts/DMSans-SemiBold.ttf#DM Sans</FontFamily>
+		<FontFamily x:Key="DmBold">avares://TechShopMS/Assets/Fonts/DMSans-Bold.ttf#DM Sans</FontFamily>
 		
 		<helper:AccessToolTipConverter x:Key="AccessToolTipConverter"/>
 		<helper:StatusToColorConverter x:Key="StatusToColorConverter"/>
@@ -68,7 +68,7 @@
 			
 			
 		</Style>
-	<StyleInclude Source="avares://CompShopSys/Assets/Icons.axaml"></StyleInclude>
+	<StyleInclude Source="avares://TechShopMS/Assets/Icons.axaml"></StyleInclude>
 	  <Style Selector="TextBlock">
         <Setter Property="FontFamily" Value="{DynamicResource DmRegular}" />
     </Style>

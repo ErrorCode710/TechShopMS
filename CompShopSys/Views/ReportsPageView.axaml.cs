@@ -1,9 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using CompShopSys.ViewModels;
+using TechShopMS.ViewModels;
 
-namespace CompShopSys.Views;
+namespace TechShopMS.Views;
 
 public partial class ReportsPageView : UserControl
 {

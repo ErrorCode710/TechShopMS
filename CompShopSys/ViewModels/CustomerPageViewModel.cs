@@ -7,17 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CompShopSys.Models;
-using CompShopSys.Services;
+using TechShopMS.Models;
+using TechShopMS.Services;
 using MsBox.Avalonia.Enums;
 using MsBox.Avalonia;
 using System.Diagnostics;
-using CompShopSys.Views;
+using TechShopMS.Views;
 using Avalonia.Controls;
 using Avalonia.VisualTree;
 
 
-namespace CompShopSys.ViewModels
+namespace TechShopMS.ViewModels
 {
    public partial class CustomerPageViewModel  :ViewModelBase
     {

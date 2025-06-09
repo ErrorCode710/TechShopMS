@@ -6,6 +6,11 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+
+	  <AssemblyName>TechShopMS</AssemblyName>
+	  <RootNamespace>TechShopMS</RootNamespace>
+
+	  
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +30,7 @@
     <None Remove="Data\CustomerDB.db" />
     <None Remove="Data\InvoiceSequence.txt" />
     <None Remove="Data\ProductDB.db" />
+    <None Remove="Data\SalesDB.db" />
     <None Remove="Data\UserDB.db" />
   </ItemGroup>
 
@@ -36,6 +42,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\ProductDB.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\SalesDB.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\UserDB.db">

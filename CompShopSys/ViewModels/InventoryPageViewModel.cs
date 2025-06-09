@@ -7,8 +7,8 @@ using Avalonia.Styling;
 using Avalonia.VisualTree;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CompShopSys.Models;
-using CompShopSys.Services;
+using TechShopMS.Models;
+using TechShopMS.Services;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
@@ -21,20 +21,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompShopSys.ViewModels
+namespace TechShopMS.ViewModels
 {
     public partial class InventoryPageViewModel : ViewModelBase
     {
-        // TODO
-        // - Fix userform UI when adding items (add fixed height or max height)
-        // - Handle SQLite unique constraint error (fixed)
-        // - Add constraints on price and quantity (Done)
-        // Add if the Imagepath is Null add default Thumbnail image(done)
-        // Make the currency Php
-        // ADD THE ITEMS NOW 
-        // OPTIONAL :
-        // Add combobox on the Category put fixed category e.g RAM, SSD, CPU, GPU, CPU
-
         private readonly ProductDbManager _dbManager;
 
         public InventoryPageViewModel()

@@ -2,14 +2,14 @@
 using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CompShopSys.Views;
+using TechShopMS.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
-namespace CompShopSys.ViewModels
+namespace TechShopMS.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
 
@@ -56,7 +56,7 @@ namespace CompShopSys.ViewModels
         { }
 
         public void SetUpNavigationItems() {
-            Items.Add(new ListItemTemplate(typeof(HomePageViewModel), "HomeRegular"));
+            //Items.Add(new ListItemTemplate(typeof(HomePageViewModel), "HomeRegular"));
             Items.Add(new ListItemTemplate(typeof(InventoryPageViewModel), "InventoryRegular"));
             Items.Add(new ListItemTemplate(typeof(SalePageViewModel), "SalesRegular"));
             Items.Add(new ListItemTemplate(typeof(CustomerPageViewModel), "CustomerRegular"));

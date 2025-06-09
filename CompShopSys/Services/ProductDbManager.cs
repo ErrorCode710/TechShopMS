@@ -1,4 +1,4 @@
-﻿using CompShopSys.Models;
+﻿using TechShopMS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using Microsoft.Data.Sqlite;
 using Tmds.DBus.Protocol;
 using System.Diagnostics;
 
-namespace CompShopSys.Services
+namespace TechShopMS.Services
 {
     public class ProductDbManager : BaseDbManager
     {

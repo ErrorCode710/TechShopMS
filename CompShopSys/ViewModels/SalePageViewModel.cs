@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CompShopSys.Models;
-using CompShopSys.Services;
+using TechShopMS.Models;
+using TechShopMS.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +14,7 @@ using CommunityToolkit.Mvvm.Input;
 using Tmds.DBus.Protocol;
 
 
-namespace CompShopSys.ViewModels
+namespace TechShopMS.ViewModels
 {
     public partial class SalePageViewModel : ViewModelBase
     {

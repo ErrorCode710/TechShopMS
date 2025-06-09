@@ -7,7 +7,7 @@ using System;
 using System.IO;
 using System.Diagnostics;
 
-namespace CompShopSys.Services
+namespace TechShopMS.Services
 {
    public  class InvoiceGenService
     {

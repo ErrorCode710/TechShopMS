@@ -3,10 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="900"
-             xmlns:viewmodels="using:CompShopSys.ViewModels"
+             xmlns:viewmodels="using:TechShopMS.ViewModels"
              x:DataType="viewmodels:SalePageViewModel"
-             x:Class="CompShopSys.Views.SalePageView"
-			 xmlns:models="clr-namespace:CompShopSys.Models"
+             x:Class="TechShopMS.Views.SalePageView"
+			 xmlns:models="clr-namespace:TechShopMS.Models"
              xmlns:fa="using:FluentAvalonia.UI.Controls">
 
 	<!-- Styles remain the same -->

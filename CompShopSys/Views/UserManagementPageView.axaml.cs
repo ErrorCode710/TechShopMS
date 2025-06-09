@@ -2,9 +2,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
-using CompShopSys.ViewModels;
+using TechShopMS.ViewModels;
 
-namespace CompShopSys.Views;
+namespace TechShopMS.Views;
 
 public partial class UserManagementPageView : UserControl
 {

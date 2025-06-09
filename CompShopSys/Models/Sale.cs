@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CompShopSys.Models;
+using TechShopMS.Models;
 
-namespace CompShopSys.Models
+namespace TechShopMS.Models
 {
     public class Sale
     {

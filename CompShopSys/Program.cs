@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace CompShopSys;
+namespace TechShopMS;
 
 sealed class Program
 {

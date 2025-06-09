@@ -2,9 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:viewmodels="using:CompShopSys.ViewModels"
+		xmlns:viewmodels="using:TechShopMS.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
-        x:Class="CompShopSys.Views.LogInWindow"
+        x:Class="TechShopMS.Views.LogInWindow"
 		Width="800"
 		Height="500"
 		x:DataType="viewmodels:LogInWindowViewModel"
@@ -13,7 +13,7 @@
 		>
 	<Grid>
 		
-		<Image Source="avares://CompShopSys/Assets/Images/bgTech.jpg"
+		<Image Source="avares://TechShopMS/Assets/Images/bgTech.jpg"
                Stretch="UniformToFill" />
 
 		<Border Background="#80000000" />
@@ -69,7 +69,7 @@
 	</Grid>
   <Window.Resources>
 	  <ImageBrush x:Key="WindowBackgroundBrush"
-			   Source="avares://CompShopSys/Assets/Images/bgTech.jpg"
+			   Source="avares://TechShopMS/Assets/Images/bgTech.jpg"
 			   Stretch="UniformToFill" />
   </Window.Resources>
 </Window>

@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CompShopSys.Models;
-using CompShopSys.Services;
+using TechShopMS.Models;
+using TechShopMS.Services;
 using MsBox.Avalonia.Enums;
 using MsBox.Avalonia;
 using System;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Avalonia.Styling;
 using System.ComponentModel.DataAnnotations;
 
-namespace CompShopSys.ViewModels
+namespace TechShopMS.ViewModels
 {
     public partial class UserManagementPageViewModel : ViewModelBase
     {

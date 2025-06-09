@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using CompShopSys.Services;
-using CompShopSys.Views;
+using TechShopMS.Services;
+using TechShopMS.Views;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 
 
-namespace CompShopSys.ViewModels
+namespace TechShopMS.ViewModels
 {
   
     public partial class LogInWindowViewModel 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompShopSys.Services
+namespace TechShopMS.Services
 {
    public abstract class BaseDbManager
     {

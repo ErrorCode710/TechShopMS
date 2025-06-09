@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 using System.Data.SQLite;
-using CompShopSys.Models;
+using TechShopMS.Models;
 using System.Diagnostics;
 
-namespace CompShopSys.Services
+namespace TechShopMS.Services
 {
    public  class CustomerDbManager: BaseDbManager
     {

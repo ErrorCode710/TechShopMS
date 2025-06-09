@@ -1,4 +1,4 @@
-﻿using CompShopSys.Models;
+﻿using TechShopMS.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
 
 
-namespace CompShopSys.Services
+namespace TechShopMS.Services
 {
     public class SaleDbManager: BaseDbManager
     {

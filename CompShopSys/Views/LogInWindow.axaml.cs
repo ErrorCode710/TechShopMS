@@ -1,13 +1,13 @@
 
 using Avalonia.Styling;
-using CompShopSys.Services;
+using TechShopMS.Services;
 using FluentAvalonia.UI.Windowing;
-using CompShopSys.ViewModels;
+using TechShopMS.ViewModels;
 using Avalonia.Threading;
 using System.Diagnostics;
 
 
-namespace CompShopSys.Views;
+namespace TechShopMS.Views;
 
 public partial class LogInWindow : AppWindow
 {

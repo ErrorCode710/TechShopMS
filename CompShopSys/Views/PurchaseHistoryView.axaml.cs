@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using CompShopSys.ViewModels;
+using TechShopMS.ViewModels;
 using FluentAvalonia.UI.Windowing;
 
-namespace CompShopSys.Views;
+namespace TechShopMS.Views;
 
 public partial class PurchaseHistoryView : AppWindow
 {

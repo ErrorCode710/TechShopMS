@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace CompShopSys.Views;
+namespace TechShopMS.Views;
 
 public partial class HomePageView : UserControl
 {
