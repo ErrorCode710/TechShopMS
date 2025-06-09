@@ -1,0 +1,191 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="CompShopSys.Views.PurchaseHistoryView"
+		xmlns:viewmodels="using:CompShopSys.ViewModels"
+		xmlns:vm="clr-namespace:CompShopSys.ViewModels"
+		x:DataType="vm:PurchaseHistoryViewModel"
+         xmlns:fa="using:FluentAvalonia.UI.Controls"
+          
+        Title="PurchaseHistoryView">
+	<Window.Styles>
+
+
+		<Style Selector="DataGridColumnHeader">
+			<Setter Property="FontSize" Value="8"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
+			<Setter Property="Foreground" Value="#65758c"/>
+
+			<Setter Property="Padding" Value="8"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+		</Style>
+		<Style Selector="DataGrid TextBlock">
+			<Setter Property="TextAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="DataGridCell">
+			<Setter Property="FontSize" Value="10"></Setter>
+			<Setter Property="FontFamily" Value="{DynamicResource DmRegular}"></Setter>
+
+		</Style>
+		<Style Selector="Button">
+			<Setter Property="Padding" Value="5"/>
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+
+		<Style Selector="Button.danger">
+			<Setter Property="Background" Value="#FF2C2C"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
+		</Style>
+
+		<Style Selector="TextBlock">
+			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
+			<Setter Property="FontSize" Value="10"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
+
+		</Style>
+
+		<Style Selector="TextBlock.UserForm">
+			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
+			<Setter Property="FontSize" Value="10"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
+			<Setter Property="Margin" Value="0,0,0,8"></Setter>
+
+		</Style>
+		<Style Selector="TextBox.UserForm">
+			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
+			<Setter Property="FontSize" Value="10"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
+			<Setter Property="Margin" Value="0,0,0,8"></Setter>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="5,0,0,0"/>
+		</Style>
+
+		<Style Selector="Button.success">
+			<Setter Property="Background" Value="{DynamicResource SafeClr}"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
+		</Style>
+
+
+		<Style Selector="Button.primary">
+			<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
+		</Style>
+		<Style Selector="Button.Clear">
+			<Setter Property="Background" Value="{DynamicResource PrimWhite}"/>
+
+			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
+		</Style>
+
+		<Style Selector="TextBox">
+			<Setter	Property="Height" Value="20"></Setter>
+
+			<Setter	Property="MinHeight" Value="15"></Setter>
+			<Setter Property="BorderBrush" Value="{DynamicResource Gray200}"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="FontSize" Value="8"/>
+			<Setter Property="CornerRadius" Value="3"></Setter>
+
+		</Style>
+		<Style Selector="TextBox:pointerover">
+			<Setter Property="BorderBrush" Value="{DynamicResource AccentClr}"/>
+		</Style>
+
+		<Style Selector="DataGridColumnHeader /template/ fa|FontIcon#SortIcon">
+			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
+			<Setter Property="FontSize" Value="10"/>
+
+		</Style>
+		<Style Selector="DataGridColumnHeader:sortascending /template/ fa|FontIcon#SortIcon">
+
+			<Setter Property="FontSize" Value="10"/>
+		</Style>
+
+		<Style Selector="DataGridColumnHeader:sortdescending /template/ fa|FontIcon#SortIcon">
+			<Setter Property="FontSize" Value="10"/>
+
+		</Style>
+
+
+		<Style Selector="DataGridColumnHeader TextBlock.Wrap">
+			<Setter Property="TextWrapping" Value="Wrap"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="TextAlignment" Value="Center"/>
+			<Setter Property="Margin" Value="4"/>
+		</Style>
+
+
+	</Window.Styles>
+
+	<Grid>
+		<DataGrid ItemsSource="{Binding Sales}"
+				  AutoGenerateColumns="False"
+				  HorizontalAlignment="Stretch"
+                  GridLinesVisibility="All"
+                  FontFamily="{DynamicResource DmRegular}"
+                  IsReadOnly="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Invoice" Binding="{Binding InvoiceNumber}" Width="*" />
+
+				<DataGridTextColumn Header="Date" Binding="{Binding SaleDate}" Width="*" />
+
+				<DataGridTextColumn Header="Total" Width="*">
+					<DataGridTextColumn.Binding>
+						<Binding Path="TotalAmount" StringFormat='₱{0:N2}' />
+					</DataGridTextColumn.Binding>
+				</DataGridTextColumn>
+
+				<DataGridTextColumn Header="Paid" Width="*">
+					<DataGridTextColumn.Binding>
+						<Binding Path="AmountPaid" StringFormat='₱{0:N2}' />
+					</DataGridTextColumn.Binding>
+				</DataGridTextColumn>
+
+				<DataGridTextColumn Header="Change" Width="*">
+					<DataGridTextColumn.Binding>
+						<Binding Path="Change" StringFormat='₱{0:N2}' />
+					</DataGridTextColumn.Binding>
+				</DataGridTextColumn>
+
+				<DataGridTemplateColumn Width="*">
+					<DataGridTemplateColumn.HeaderTemplate>
+						<DataTemplate>
+							<TextBlock Text="Items Purchase"
+									   TextWrapping="Wrap"
+									   TextAlignment="Center"
+									   HorizontalAlignment="Center" />
+						</DataTemplate>
+					</DataGridTemplateColumn.HeaderTemplate>
+
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
+								<Button Content="View"
+										FontSize="10"
+										Padding="5,2"
+										Classes="primary"
+										Command="{Binding Path=((viewmodels:PurchaseHistoryViewModel)DataContext).ViewSaleItemHistoryCommand,
+                                              RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+										CommandParameter="{Binding}" />
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</Window>

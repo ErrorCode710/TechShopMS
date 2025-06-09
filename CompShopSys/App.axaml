@@ -1,0 +1,77 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CompShopSys.App"
+             xmlns:local="using:CompShopSys"
+			 xmlns:helper="clr-namespace:CompShopSys.Helper"
+			 xmlns:sty="using:FluentAvalonia.Styling"
+             RequestedThemeVariant="Light">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+	<Application.Resources>
+		<SolidColorBrush x:Key="PrimWhite" Color="#FAFAFA"></SolidColorBrush>
+		<SolidColorBrush x:Key="PrimBlack" Color="#1a1c1e"></SolidColorBrush>
+		<SolidColorBrush x:Key="AccentClr" Color="#0083FF"></SolidColorBrush>
+		<SolidColorBrush x:Key="SafeClr" Color="#32C156"></SolidColorBrush>
+	    <SolidColorBrush x:Key="DangerClr" Color="#FE8991"></SolidColorBrush>
+		<SolidColorBrush x:Key="Gray100" Color="#F0F0F0"/>
+		<SolidColorBrush x:Key="Gray200" Color="#D4D4D4"/>
+		<SolidColorBrush x:Key="Gray300" Color="#A8A8A8"/>
+		<SolidColorBrush x:Key="Gray400" Color="#6E6E6E"/>
+		<SolidColorBrush x:Key="Gray500" Color="#2C2C2C"/>
+
+		<SolidColorBrush x:Key="LightGray100" Color="#B0B0B0"/>
+		
+		<SolidColorBrush x:Key="LightGray200" Color="#A0A0A0"/>
+		
+		<SolidColorBrush x:Key="LightGray300" Color="#909090"/>
+	
+		<SolidColorBrush x:Key="LightGray400" Color="#808080"/>
+		
+		<SolidColorBrush x:Key="LightGray500" Color="#707070"/>
+
+		<SolidColorBrush x:Key="SelectBgClr" Color="#27292B"/>
+		
+		
+
+		<SolidColorBrush x:Key="TitleBarButtonForeground" Color="Red"/>
+		<SolidColorBrush x:Key="TitleBarButtonForegroundPointerOver" Color="White"/>
+		<SolidColorBrush x:Key="TitleBarButtonBackgroundPointerOver" Color="#33FFFFFF"/>
+		<SolidColorBrush x:Key="TitleBarButtonBackgroundPressed" Color="#55FFFFFF"/>
+		
+	
+	    <FontFamily x:Key="DmRegular">avares://CompShopSys/Assets/Fonts/DMSans-Regular.ttf#DM Sans</FontFamily>
+		<FontFamily x:Key="DmMedium">avares://CompShopSys/Assets/Fonts/DMSans-Medium.ttf#DM Sans</FontFamily>
+		<FontFamily x:Key="DmSemiBold">avares://CompShopSys/Assets/Fonts/DMSans-SemiBold.ttf#DM Sans</FontFamily>
+		<FontFamily x:Key="DmBold">avares://CompShopSys/Assets/Fonts/DMSans-Bold.ttf#DM Sans</FontFamily>
+		
+		<helper:AccessToolTipConverter x:Key="AccessToolTipConverter"/>
+		<helper:StatusToColorConverter x:Key="StatusToColorConverter"/>
+</Application.Resources>
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+	
+  
+    <Application.Styles>
+	<sty:FluentAvaloniaTheme PreferUserAccentColor="True"> </sty:FluentAvaloniaTheme>
+
+		
+
+
+		<!--<FluentTheme /> -->
+		<Style Selector="CaptionButtons /template/ Button#PART_MinimizeButton">
+			<!-- Default state -->
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="Red"/>
+			
+			
+			
+			
+		</Style>
+	<StyleInclude Source="avares://CompShopSys/Assets/Icons.axaml"></StyleInclude>
+	  <Style Selector="TextBlock">
+        <Setter Property="FontFamily" Value="{DynamicResource DmRegular}" />
+    </Style>
+    </Application.Styles>	
+
+</Application>

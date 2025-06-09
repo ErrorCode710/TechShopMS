@@ -1,0 +1,126 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CompShopSys.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="CompShopSys.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="CompShopSys">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid RowDefinitions="Auto, *">
+		<Border Grid.Row="0" Background="{DynamicResource PrimBlack}">
+			<TextBlock Foreground="{DynamicResource PrimWhite}" Classes="Pane" Text="Computer Shop Management System"
+                       VerticalAlignment="Center" Margin="10 10"></TextBlock>
+		</Border>
+		<SplitView Grid.Row="1"
+                   IsPaneOpen="True"
+                   OpenPaneLength="200"
+				   
+                   PaneBackground="{DynamicResource PrimBlack}"
+                   Background="{DynamicResource PrimBlack}"
+                   CompactPaneLength="48"
+                   DisplayMode="CompactInline">
+			<SplitView.Pane>
+				<Grid RowDefinitions="*,Auto">
+					<StackPanel Grid.Row="0" Spacing="5" Margin="5">
+						<ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedListItem}">
+							<ListBox.Styles>
+								<Style Selector="ListBoxItem">
+									<Setter Property="Background" Value="{DynamicResource PrimBlack}"/>
+									<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+									<Setter Property="Padding" Value="10"/>
+								</Style>
+								<Style Selector="ListBoxItem:hover">
+									<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
+									<Setter Property="Foreground" Value="White"/>
+								</Style>
+								<Style Selector="ListBoxItem:selected">
+									<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
+									<Setter Property="Foreground" Value="White"/>
+									
+								</Style>
+								<Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+
+									<Setter Property="Background" Value="{DynamicResource SelectBgClr}"/>
+									<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+								</Style>
+								<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+									<Setter Property="Background" Value="{DynamicResource SelectBgClr}"/>
+
+									<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+								</Style>
+								
+								<Style Selector="ListBoxItem:focus">
+									<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
+									<Setter Property="Foreground" Value="White"/>
+								</Style>
+
+								<Style Selector="StackPanel.isEnabled">
+									<Setter Property="Opacity" Value="0.5" />
+								</Style>
+								<Style Selector="StackPanel.isEnabledNo">
+									<Setter Property="Opacity" Value="1" />
+								</Style>
+								
+							</ListBox.Styles>
+							<ListBox.ItemTemplate>
+								<DataTemplate DataType="{x:Type vm:ListItemTemplate}">
+									<StackPanel Spacing="15" 
+												Orientation="Horizontal" 
+												IsEnabled="{Binding IsEnabled}"
+												Classes.isEnabled="{Binding !IsEnabled }"
+												Classes.isEnabledNo="{Binding IsEnabled }"
+												
+												>
+										
+
+										<PathIcon Data="{Binding ListItemIcon}"></PathIcon>
+										<TextBlock Text="{Binding Label}"
+												   ></TextBlock>
+										
+									</StackPanel>
+									
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
+					</StackPanel>
+
+					<Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto" Margin="5" VerticalAlignment="Center">
+						<Border Width="30" Height="30" CornerRadius="40" ClipToBounds="True" Grid.Column="0">
+							<Image Source="/Assets/avalonia-logo.ico" VerticalAlignment="Center"/>
+						</Border>
+
+						<StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
+							<TextBlock Text="{Binding FullName}" FontSize="12" Foreground="{DynamicResource PrimWhite}"/>
+							<TextBlock Text="{Binding Email}" FontSize="8" Foreground="{DynamicResource Gray200}"/>
+						</StackPanel>
+
+						<PathIcon Margin="0,0,0,0" Foreground="{DynamicResource Gray200}" Grid.Column="2" Data="{StaticResource SignOutRegular}"/>
+					</Grid>
+				</Grid>
+			</SplitView.Pane>
+			<SplitView.Content>
+				<Border CornerRadius="12 0 0 0" Background="{DynamicResource PrimWhite}">
+					<StackPanel>
+						<Border Padding="10">
+							<DockPanel>
+								<TextBlock Text="{Binding HeaderLabel}" FontWeight="Bold" FontSize="20" Foreground="{DynamicResource PrimBlack}" DockPanel.Dock="Left"/>
+								<TextBlock Text="{Binding UserRoleDisplay}" FontSize="14" Foreground="{DynamicResource PrimBlack}" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+							</DockPanel>
+						</Border>
+						
+						<TransitioningContentControl Content="{Binding CurrentPage}"
+												   Foreground="{DynamicResource PrimBlack}" />
+							
+					</StackPanel>
+				</Border>
+			</SplitView.Content>
+		</SplitView>
+	</Grid>
+</Window>
