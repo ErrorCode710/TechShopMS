@@ -3,7 +3,7 @@
              x:Class="TechShopMS.App"
              xmlns:local="using:TechShopMS"
 			 xmlns:helper="clr-namespace:TechShopMS.Helper"
-			 xmlns:sty="using:FluentAvalonia.Styling"
+			xmlns:sty="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
              RequestedThemeVariant="Light">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -31,6 +31,38 @@
 
 		<SolidColorBrush x:Key="SelectBgClr" Color="#27292B"/>
 		
+		<!-- Lavender Theme -->
+<SolidColorBrush x:Key="ClientBaseColor" Color="#EECEFF" />          <!-- Main UI base -->
+<SolidColorBrush x:Key="ClientPrimaryColor" Color="#8961CC" />       <!-- Primary action color -->
+<SolidColorBrush x:Key="ClientRegionColor" Color="#FEF6FF" />        <!-- Subtle section background -->
+<SolidColorBrush x:Key="ClientSidebarColor" Color="#6E4BB0" />   
+<!-- Text Colors -->
+<SolidColorBrush x:Key="ClientTextDark" Color="#3C2F4B" />           <!-- Main text on light background -->
+<SolidColorBrush x:Key="ClientTextLight" Color="#F7F3FF" />          <!-- Text on dark background -->
+<SolidColorBrush x:Key="ClientTextMuted" Color="#7B659B" />          <!-- Secondary / hint text -->
+
+<!-- Accent & Action Colors -->
+<SolidColorBrush x:Key="ClientAccentColor" Color="#6E4BB0" />        <!-- Hover / Sidebar / stronger accent -->
+<SolidColorBrush x:Key="ClientSafeColor" Color="#32C156" />          <!-- Safe / success actions -->
+<SolidColorBrush x:Key="ClientDangerColor" Color="#D46A6A" />        <!-- Danger / remove buttons -->
+
+<!-- Grayscale Shades (to complement lavender) -->
+<SolidColorBrush x:Key="ClientGray100" Color="#F3EDF9" />
+<SolidColorBrush x:Key="ClientGray200" Color="#DCD2EA" />
+<SolidColorBrush x:Key="ClientGray300" Color="#BBAED9" />
+<SolidColorBrush x:Key="ClientGray400" Color="#8E7ABF" />
+<SolidColorBrush x:Key="ClientGray500" Color="#6E4BB0" />           <!-- Duplicates Accent if needed -->
+
+<!-- LightGray variants (desaturated) -->
+<SolidColorBrush x:Key="ClientLightGray100" Color="#E9E0ED" />
+<SolidColorBrush x:Key="ClientLightGray200" Color="#D0C3D9" />
+<SolidColorBrush x:Key="ClientLightGray300" Color="#B5A8C4" />
+<SolidColorBrush x:Key="ClientLightGray400" Color="#998CAB" />
+<SolidColorBrush x:Key="ClientLightGray500" Color="#7F7292" />
+
+<!-- Selection / Highlight Background -->
+<SolidColorBrush x:Key="ClientSelectBgColor" Color="#F0E4FF" />      <!-- Slightly deeper than Region -->
+		
 		
 
 		<SolidColorBrush x:Key="TitleBarButtonForeground" Color="Red"/>
@@ -44,19 +76,24 @@
 		<FontFamily x:Key="DmSemiBold">avares://TechShopMS/Assets/Fonts/DMSans-SemiBold.ttf#DM Sans</FontFamily>
 		<FontFamily x:Key="DmBold">avares://TechShopMS/Assets/Fonts/DMSans-Bold.ttf#DM Sans</FontFamily>
 		
+		
 		<helper:AccessToolTipConverter x:Key="AccessToolTipConverter"/>
 		<helper:StatusToColorConverter x:Key="StatusToColorConverter"/>
-</Application.Resources>
+		
+	
+	</Application.Resources>
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>
 	
   
     <Application.Styles>
-	<sty:FluentAvaloniaTheme PreferUserAccentColor="True"> </sty:FluentAvaloniaTheme>
+	
 
+	<sty:FluentAvaloniaTheme PreferUserAccentColor="True"> 
+	
 		
-
+	</sty:FluentAvaloniaTheme>
 
 		<!--<FluentTheme /> -->
 		<Style Selector="CaptionButtons /template/ Button#PART_MinimizeButton">
@@ -65,6 +102,14 @@
 			<Setter Property="Foreground" Value="Red"/>
 			
 			
+			
+			<FluentTheme>
+  <FluentTheme.Palettes>
+    <ColorPaletteResources x:Key="Light" Accent="#ff8961cc" AltHigh="White" AltLow="White" AltMedium="White" AltMediumHigh="White" AltMediumLow="White" BaseHigh="Black" BaseLow="#ffeeceff" BaseMedium="#ffa987bc" BaseMediumHigh="#ff7b5890" BaseMediumLow="#ff9270a6" ChromeAltLow="#ff7b5890" ChromeBlackHigh="Black" ChromeBlackLow="#ffeeceff" ChromeBlackMedium="#ff7b5890" ChromeBlackMediumLow="#ffa987bc" ChromeDisabledHigh="#ffeeceff" ChromeDisabledLow="#ffa987bc" ChromeGray="#ff9270a6" ChromeHigh="#ffeeceff" ChromeLow="#fffeeaff" ChromeMedium="#fffbe4ff" ChromeMediumLow="#fffeeaff" ChromeWhite="White" ListLow="#fffbe4ff" ListMedium="#ffeeceff" RegionColor="#fffef6ff" />
+    <ColorPaletteResources x:Key="Dark" Accent="#ff8961cc" AltHigh="Black" AltLow="Black" AltMedium="Black" AltMediumHigh="Black" AltMediumLow="Black" BaseHigh="White" BaseLow="#ff64576b" BaseMedium="#ffb6aabc" BaseMediumHigh="#ffcbbfd0" BaseMediumLow="#ff8d8193" ChromeAltLow="#ffcbbfd0" ChromeBlackHigh="Black" ChromeBlackLow="#ffcbbfd0" ChromeBlackMedium="Black" ChromeBlackMediumLow="Black" ChromeDisabledHigh="#ff64576b" ChromeDisabledLow="#ffb6aabc" ChromeGray="#ffa295a8" ChromeHigh="#ffa295a8" ChromeLow="#ff332041" ChromeMedium="#ff3f2e4b" ChromeMediumLow="#ff584960" ChromeWhite="White" ListLow="#ff3f2e4b" ListMedium="#ff64576b" RegionColor="#ff262738" />
+  </FluentTheme.Palettes>
+</FluentTheme>
+
 			
 			
 		</Style>

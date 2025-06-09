@@ -14,9 +14,6 @@ namespace TechShopMS.ViewModels
     public partial class ReportsPageViewModel : ViewModelBase
     {
 
-        // TODO:
-        // ADD SORT ON THE STATUS STOCK
-        // IF I WILL DELETE THE CUSTOMER DELETE ALSO THE HISTORY
         private readonly SaleDbManager _saleDbManager;
         private readonly ProductDbManager _productDbManager;
         private readonly CustomerDbManager _customerDbManager;
@@ -59,7 +56,7 @@ namespace TechShopMS.ViewModels
                 SalesReports = new ObservableCollection<SalesReport>(_saleDbManager.GetSalesReport());
                 InventoryReports = new ObservableCollection<InventoryReport>(_productDbManager.GetInventoryReport());
 
-                var customers = _customerDbManager.GetAllCustomers(); // You must have this method in your CustomerDbManager
+                var customers = _customerDbManager.GetAllCustomers(); 
                 var customerReportsList = new List<CustomerReport>();
 
 
@@ -90,18 +87,7 @@ namespace TechShopMS.ViewModels
             }
         }
 
-        //public CustomerReport GenerateCustomerReport(int customerId, string fullName)
-        //{
-        //    var sales = _saleDbManager.GetSalesByCustomer(customerId);
-
-        //    return new CustomerReport
-        //    {
-        //        FullName = fullName,
-        //        TotalPurchases = sales.Count,
-        //        TotalSpent = sales.Sum(s => s.TotalAmount),
-        //        LastPurchaseDate = sales.Max(s => s.SaleDate)
-        //    };
-        //}
+      
 
     }
 

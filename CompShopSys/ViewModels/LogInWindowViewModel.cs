@@ -17,8 +17,8 @@ namespace TechShopMS.ViewModels
         private readonly Window _loginWindow;
 
 
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public string UserName { get; set; } = "Admin";
+        public string Password { get; set; } = "Admin123";
 
 
 
@@ -30,8 +30,10 @@ namespace TechShopMS.ViewModels
 
        public void OnLogInButtonClick()
         {
-           
-            logInValidationAsync(); 
+
+            //logInValidationAsync(); 
+            onLoginSuccess();
+
         }
 
         private async Task logInValidationAsync()

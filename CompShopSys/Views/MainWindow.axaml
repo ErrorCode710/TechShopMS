@@ -22,8 +22,8 @@
                    IsPaneOpen="True"
                    OpenPaneLength="200"
 				   
-                   PaneBackground="{DynamicResource PrimBlack}"
-                   Background="{DynamicResource PrimBlack}"
+                   PaneBackground="{DynamicResource ClientBaseColor}"
+                   Background="{DynamicResource ClientBaseColor}"
                    CompactPaneLength="48"
                    DisplayMode="CompactInline">
 			<SplitView.Pane>
@@ -32,28 +32,28 @@
 						<ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedListItem}">
 							<ListBox.Styles>
 								<Style Selector="ListBoxItem">
-									<Setter Property="Background" Value="{DynamicResource PrimBlack}"/>
-									<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+									<Setter Property="Background" Value="{DynamicResource ClientBaseColor}"/>
+									<Setter Property="Foreground" Value="Black"/>
 									<Setter Property="Padding" Value="10"/>
 								</Style>
 								<Style Selector="ListBoxItem:hover">
-									<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
-									<Setter Property="Foreground" Value="White"/>
+									<Setter Property="Background" Value="{DynamicResource ClientGray100}"/>
+									<Setter Property="Foreground" Value="Black"/>
 								</Style>
 								<Style Selector="ListBoxItem:selected">
 									<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
-									<Setter Property="Foreground" Value="White"/>
+									<Setter Property="Foreground" Value="Black"/>
 									
 								</Style>
 								<Style Selector="ListBoxItem:selected /template/ ContentPresenter">
 
-									<Setter Property="Background" Value="{DynamicResource SelectBgClr}"/>
-									<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+									<Setter Property="Background" Value="{DynamicResource ClientGray100}"/>
+									<Setter Property="Foreground" Value="Black"/>
 								</Style>
 								<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
-									<Setter Property="Background" Value="{DynamicResource SelectBgClr}"/>
+									<Setter Property="Background" Value="{DynamicResource ClientGray100}"/>
 
-									<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+									<Setter Property="Foreground" Value="Black"/>
 								</Style>
 								
 								<Style Selector="ListBoxItem:focus">
