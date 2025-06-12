@@ -37,6 +37,8 @@ namespace TechShopMS.ViewModels
             userRole = SessionService.CurrentRole;
             Debug.WriteLine($"UserRole on Inventory Page is {userRole}");
 
+            //_dbManager.SeedProduct3Sets();
+
         }
 
         #region Observable Properties

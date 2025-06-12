@@ -314,6 +314,62 @@ namespace TechShopMS.Services
 
             Debug.WriteLine("Seeded products into database.");
         }
+
+        public void SeedProduct3Sets()
+        {
+            var products = new List<Product>
+    {
+                        new Product { SKU = "CPU-INT001", ProductName = "Intel Core i3-12100", Category = "CPU", Brand = "Intel", Description = "4 Cores, 8 Threads, up to 4.3GHz", ImagePath = "", Price = 5200, Quantity = 15 },
+                        new Product { SKU = "CPU-AMD002", ProductName = "AMD Ryzen 5 5600", Category = "CPU", Brand = "AMD", Description = "6 Cores, 12 Threads, up to 4.4GHz", ImagePath = "", Price = 6800, Quantity = 12 },
+                        new Product { SKU = "CPU-INT003", ProductName = "Intel Core i7-14700K", Category = "CPU", Brand = "Intel", Description = "20 Cores (8P+12E), 28 Threads", ImagePath = "", Price = 24800, Quantity = 5 },
+
+                        new Product { SKU = "MB-GI001", ProductName = "Gigabyte H610M", Category = "Motherboards", Brand = "Gigabyte", Description = "LGA1700, DDR4, mATX", ImagePath = "", Price = 3500, Quantity = 10 },
+                        new Product { SKU = "MB-MSI002", ProductName = "MSI B550M PRO-VDH", Category = "Motherboards", Brand = "MSI", Description = "AM4, DDR4, mATX", ImagePath = "", Price = 4200, Quantity = 8 },
+                        new Product { SKU = "MB-AS003", ProductName = "ASUS Z790-A WiFi", Category = "Motherboards", Brand = "ASUS", Description = "LGA1700, DDR5, ATX, WiFi", ImagePath = "", Price = 16000, Quantity = 4 },
+
+                        new Product { SKU = "RAM-KS001", ProductName = "Kingston 8GB DDR4 2666MHz", Category = "RAM", Brand = "Kingston", Description = "Single Stick, CL19", ImagePath = "", Price = 1300, Quantity = 25 },
+                        new Product { SKU = "RAM-COR002", ProductName = "Corsair Vengeance 16GB DDR4 3200MHz", Category = "RAM", Brand = "Corsair", Description = "Dual Channel Kit", ImagePath = "", Price = 2800, Quantity = 15 },
+                        new Product { SKU = "RAM-GSK003", ProductName = "G.Skill Trident Z 32GB DDR5 6000MHz", Category = "RAM", Brand = "G.Skill", Description = "Dual Channel Kit, RGB", ImagePath = "", Price = 7500, Quantity = 7 },
+
+                        new Product { SKU = "ST-KS001", ProductName = "Kingston 240GB SSD", Category = "Storage", Brand = "Kingston", Description = "2.5\" SATA SSD", ImagePath = "", Price = 900, Quantity = 30 },
+                        new Product { SKU = "ST-SN002", ProductName = "Samsung 980 500GB NVMe", Category = "Storage", Brand = "Samsung", Description = "Gen3 NVMe SSD", ImagePath = "", Price = 2600, Quantity = 18 },
+                        new Product { SKU = "ST-WD003", ProductName = "WD Blue 1TB HDD", Category = "Storage", Brand = "Western Digital", Description = "7200 RPM, SATA", ImagePath = "", Price = 1800, Quantity = 20 },
+
+                        new Product { SKU = "GPU-INT001", ProductName = "Integrated Intel UHD 730", Category = "GPU", Brand = "Intel", Description = "Built-in GPU", ImagePath = "", Price = 0, Quantity = 0 },
+                        new Product { SKU = "GPU-NVD002", ProductName = "NVIDIA GTX 1660 Super", Category = "GPU", Brand = "NVIDIA", Description = "6GB GDDR6, HDMI, DP", ImagePath = "", Price = 12500, Quantity = 8 },
+                        new Product { SKU = "GPU-NVD003", ProductName = "NVIDIA RTX 4070 Ti", Category = "GPU", Brand = "NVIDIA", Description = "12GB GDDR6X, Triple Fan", ImagePath = "", Price = 38900, Quantity = 3 },
+
+                        new Product { SKU = "PSU-PS001", ProductName = "Generic 500W PSU", Category = "Power Supply", Brand = "Generic", Description = "Non-Modular", ImagePath = "", Price = 850, Quantity = 20 },
+                        new Product { SKU = "PSU-COR002", ProductName = "Corsair CX550 80+ Bronze", Category = "Power Supply", Brand = "Corsair", Description = "550W, Semi-Modular", ImagePath = "", Price = 3200, Quantity = 10 },
+
+                        new Product { SKU = "CS-GEN001", ProductName = "Mini Tower Case with PSU", Category = "Case", Brand = "Generic", Description = "mATX, Black", ImagePath = "", Price = 1200, Quantity = 15 },
+                        new Product { SKU = "CS-RGB002", ProductName = "Mid Tower RGB Case", Category = "Case", Brand = "Tecware", Description = "ATX, 4 RGB Fans", ImagePath = "", Price = 2600, Quantity = 10 },
+                        new Product { SKU = "CS-PRM003", ProductName = "Full Tower Tempered Glass", Category = "Case", Brand = "Lian Li", Description = "ATX, RGB, Side Panel", ImagePath = "", Price = 4800, Quantity = 5 },
+
+                        new Product { SKU = "CH-OFC001", ProductName = "Standard Office Chair", Category = "Chairs/Table", Brand = "Generic", Description = "With Wheels, Adjustable Height", ImagePath = "", Price = 1500, Quantity = 20 },
+                        new Product { SKU = "CH-GM002", ProductName = "Gaming Chair Reclinable", Category = "Chairs/Table", Brand = "Fantech", Description = "Reclinable, Lumbar Support", ImagePath = "", Price = 5800, Quantity = 10 },
+                        new Product { SKU = "TB-CMP003", ProductName = "Compact Computer Table", Category = "Chairs/Table", Brand = "Generic", Description = "Wood Finish, Keyboard Tray", ImagePath = "", Price = 2000, Quantity = 12 },
+                        new Product { SKU = "TB-GM004", ProductName = "RGB Gaming Desk", Category = "Chairs/Table", Brand = "Rakk", Description = "Wide Surface, Cable Management", ImagePath = "", Price = 4800, Quantity = 6 },
+
+                        new Product { SKU = "KB-BSC001", ProductName = "Basic USB Keyboard", Category = "Keyboards", Brand = "Generic", Description = "Standard Layout", ImagePath = "", Price = 300, Quantity = 40 },
+                        new Product { SKU = "KB-RGB002", ProductName = "RGB Mechanical Keyboard", Category = "Keyboards", Brand = "Redragon", Description = "Blue Switches", ImagePath = "", Price = 2100, Quantity = 15 },
+
+                        new Product { SKU = "MS-OP001", ProductName = "Optical USB Mouse", Category = "Mice", Brand = "Generic", Description = "3 Buttons", ImagePath = "", Price = 250, Quantity = 40 },
+                        new Product { SKU = "MS-GM002", ProductName = "Gaming Mouse with DPI", Category = "Mice", Brand = "Logitech", Description = "Adjustable DPI, 6 Buttons", ImagePath = "", Price = 850, Quantity = 20 },
+
+                        new Product { SKU = "MN-AS001", ProductName = "ASUS TUF Gaming (144Hz)", Category = "Monitors", Brand = "ASUS", Description = "24\" FHD, 144Hz, 1ms", ImagePath = "", Price = 12000, Quantity = 8 },
+                        new Product { SKU = "MN-AC002", ProductName = "Acer Nitro (IPS Panel)", Category = "Monitors", Brand = "Acer", Description = "23.8\" FHD, IPS, 75Hz", ImagePath = "", Price = 8500, Quantity = 10 },
+                        new Product { SKU = "MN-LG003", ProductName = "LG UltraGear 27\" 165Hz", Category = "Monitors", Brand = "LG", Description = "1440p, 1ms, FreeSync", ImagePath = "", Price = 18500, Quantity = 5 },
+
+         };
+
+            foreach (var product in products)
+            {
+                AddProduct(product);
+            }
+
+            Debug.WriteLine("Seeded products into database.");
+        }
         public void RemoveProduct(int productId)
         {
             Connect();

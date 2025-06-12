@@ -68,10 +68,11 @@
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
-
+		<!-- Search Section
 		<Style Selector="DataGridRow:nth-child(odd)">
 			<Setter Property="Background" Value="{DynamicResource ClientLightGray100}"/>
 		</Style>
+		 -->
 	</UserControl.Styles>
 	<Grid RowDefinitions="Auto,*" Margin="20">
 		<!-- Search Section -->

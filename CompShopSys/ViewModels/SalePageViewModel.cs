@@ -13,6 +13,7 @@ using MsBox.Avalonia.Enums;
 using CommunityToolkit.Mvvm.Input;
 using Tmds.DBus.Protocol;
 using TechShopMS.Helper;
+using System.IO;
 
 
 namespace TechShopMS.ViewModels
@@ -23,8 +24,8 @@ namespace TechShopMS.ViewModels
         //private readonly CustomerDbManager _dbManager;
         private const int PageSize = 3;
 
-        public ObservableCollection<string> CategoryOptions { get; } = new()
-    {
+        public ObservableCollection<string> CategoryOptions { get; } = new() { 
+        "All Categories",
         "Motherboards",
         "CPU",
         "RAM",
@@ -226,7 +227,7 @@ namespace TechShopMS.ViewModels
                 var products = await Task.Run(() => _productDbManager.GetAllProducts());
                 AllProducts = new ObservableCollection<Product>(products);
                 FilteredProducts = new ObservableCollection<Product>(products);
-
+                FilterProductsByCategory();
             }
             catch (Exception ex)
             {
@@ -309,6 +310,24 @@ namespace TechShopMS.ViewModels
             CalculateChange();
         }
 
+        partial void OnCategoryChanged(string value)
+        {
+            FilterProductsByCategory();
+        }
+
+        private void FilterProductsByCategory()
+        {
+            if (string.IsNullOrEmpty(Category) || Category == "All Categories")
+            {
+                FilteredProducts = new ObservableCollection<Product>(AllProducts);
+            }
+            else
+            {
+                FilteredProducts = new ObservableCollection<Product>(
+                    AllProducts.Where(p => p.Category == Category)
+                );
+            }
+        }
         #endregion
         #region Add, Edit, Delete
         [RelayCommand]
@@ -391,6 +410,35 @@ namespace TechShopMS.ViewModels
                 CalculateTotalQuantity();
                 SelectedSaleItem = null;
             }
+        }
+
+        [RelayCommand]
+        public async Task RemoveSaleItemBySKU(string sku)
+        {
+            if (string.IsNullOrWhiteSpace(sku))
+            {
+                await ShowMessage("Error", "Invalid item identifier.");
+                return;
+            }
+
+            var itemToRemove = SaleItems.FirstOrDefault(item => item.SKU == sku);
+            if (itemToRemove == null)
+            {
+                await ShowMessage("Error", "Item not found.");
+                return;
+            }
+
+            // Release reserved stock
+            if (_reservedStocks.ContainsKey(sku))
+            {
+                _reservedStocks[sku] -= itemToRemove.Quantity;
+                if (_reservedStocks[sku] <= 0)
+                    _reservedStocks.Remove(sku);
+            }
+
+            SaleItems.Remove(itemToRemove);
+            CalculateTotalAmount();
+            CalculateTotalQuantity();
         }
 
         [RelayCommand]
@@ -479,12 +527,23 @@ namespace TechShopMS.ViewModels
 
                 _saleDbManager.AddSale(newSale);
 
+                var pdfService = new PdfInvoiceService();
+                string invoicePath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    $"Invoice_{InvoiceNumber}.pdf");
+
+                pdfService.GenerateInvoice(newSale, SelectedCustomer, invoicePath);
+
+                // Optional: Open the PDF automatically
+                //Process.Start(new ProcessStartInfo(invoicePath) { UseShellExecute = true });
+
                 
+                await ShowMessage("Success", "Sale completed successfully!");
+                Process.Start(new ProcessStartInfo(invoicePath) { UseShellExecute = true });
                 _originalStocks.Clear();
                 _reservedStocks.Clear();
                 LoadProducts();
                 ClearSaleForm();
-                await ShowMessage("Success", "Sale completed successfully!");
             }
             catch (Exception ex)
             {

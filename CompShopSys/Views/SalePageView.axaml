@@ -127,41 +127,41 @@
 							   FontFamily="{DynamicResource DmBold}"
 							   Foreground="{DynamicResource ClientTextLight}" />
 
-					<!-- Category and Product Inputs -->
-					<Grid ColumnDefinitions="Auto,*,Auto,*"
-						  ColumnSpacing="10"
-						  HorizontalAlignment="Center">
+					<!-- Input Fields Row -->
+					<Grid ColumnDefinitions="Auto,150,Auto,150,Auto,80"
+						  ColumnSpacing="15"
+						  HorizontalAlignment="Center"
+						  VerticalAlignment="Center">
 
-						<!-- Category Label -->
+						<!-- Category -->
 						<TextBlock Text="Category:"
 								   Grid.Column="0"
 								   VerticalAlignment="Center"
 								   FontFamily="{DynamicResource DmBold}"
 								   Foreground="{DynamicResource ClientTextLight}" />
 
-						<!-- Category ComboBox -->
-						<ComboBox Classes="UserForm"
-								  Grid.Column="1"
-								  Width="200"
+						<ComboBox Grid.Column="1"
+								  Classes="UserForm"
 								  ItemsSource="{Binding CategoryOptions}"
-								SelectedItem="{Binding Category, Mode=TwoWay}"
-								  Margin="0,0,20,0"/>
+								  SelectedItem="{Binding Category, Mode=TwoWay}"
+								  HorizontalAlignment="Stretch"/>
 
-						<!-- Item Name Label -->
+						<!-- Item Name -->
 						<TextBlock Text="Item Name:"
 								   Grid.Column="2"
 								   VerticalAlignment="Center"
+								   Margin="15,0,0,0"
 								   FontFamily="{DynamicResource DmBold}"
 								   Foreground="{DynamicResource ClientTextLight}" />
 
-						<!-- Item Name AutoCompleteBox -->
-						<AutoCompleteBox ItemsSource="{Binding FilteredProducts}"
-										 Text="{Binding ProductName, Mode=TwoWay}"
-										 SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
-										 Watermark="Search Product"
-										 Classes="UserForm"
-										 Width="200"
-										 Grid.Column="3">
+						<AutoCompleteBox Grid.Column="3"
+										ItemsSource="{Binding FilteredProducts}"
+										Text="{Binding ProductName, Mode=TwoWay}"
+										SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+										Watermark="Search Product"
+										 MinimumPopulateDelay="0"
+										Classes="UserForm"
+										HorizontalAlignment="Stretch">
 							<AutoCompleteBox.ItemTemplate>
 								<DataTemplate x:DataType="models:Product">
 									<StackPanel Orientation="Horizontal" Spacing="8">
@@ -172,6 +172,24 @@
 								</DataTemplate>
 							</AutoCompleteBox.ItemTemplate>
 						</AutoCompleteBox>
+
+						<!-- Quantity -->
+						<TextBlock Text="Quantity:"
+								   Grid.Column="4"
+								   VerticalAlignment="Center"
+								   Margin="15,0,0,0"
+								   FontFamily="{DynamicResource DmBold}"
+								   Foreground="{DynamicResource ClientTextLight}" />
+
+						<NumericUpDown Grid.Column="5"
+									   FontSize="12"
+									   Padding="5,0"
+									   MinWidth="100"
+									   HorizontalAlignment="Stretch"
+									   Minimum="1"
+									   Maximum="{Binding AvailableQuantity}"
+									   Increment="1"
+									   Value="{Binding Quantity, Mode=TwoWay}"/>
 					</Grid>
 
 					<!-- Add Item Button -->
@@ -179,6 +197,7 @@
 							HorizontalAlignment="Center"
 							Padding="10,6"
 							Classes="success"
+							Command="{Binding AddSaleItemCommand}"
 							FontFamily="{DynamicResource DmBold}"
 							Background="{DynamicResource ClientAccentBrush}"
 							Foreground="White" />
@@ -190,8 +209,16 @@
 					<TextBlock Grid.Row="0" Text="Enter Item Details" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="14" FontFamily="{DynamicResource DmBold}" Foreground="{DynamicResource PrimBlack}" />
 					<Grid Grid.Row="1" Margin="10" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">
 						<TextBox Text="{Binding ProductId, Mode=OneWay}" IsVisible="False" />
-						<TextBlock Text="Product Name:" Classes="UserForm" Grid.Row="0" Grid.Column="0" />
-						<AutoCompleteBox Watermark="Type product..." Margin="0,0,0,10" Classes="UserForm" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding AllProducts}" Text="{Binding ProductName, Mode=TwoWay}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Padding="3,0">
+						<TextBlock Text="Item Name:" Classes="UserForm" Grid.Row="0" Grid.Column="0" />
+						<AutoCompleteBox Watermark="Type product..."
+										 Margin="0,0,0,10"
+										 Classes="UserForm"
+										 Grid.Row="0" Grid.Column="1"
+										 ItemsSource="{Binding AllProducts}"
+										 Text="{Binding ProductName, Mode=TwoWay}"
+										 MinimumPrefixLength="0"
+										 GotFocus="AutoCompleteBox_GotFocus"
+										 SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" Padding="3,0">
 							<AutoCompleteBox.ItemTemplate>
 								<DataTemplate x:DataType="models:Product">
 									<StackPanel Orientation="Horizontal" Spacing="8">
@@ -241,8 +268,10 @@
 					<!-- Pagination -->
 				</Grid.RowDefinitions>
 
-				<Border  BoxShadow="0 3 8 0 #3D000000" CornerRadius="10" Padding="10">
+				<Border  BorderBrush="{DynamicResource ClientPrimaryColor}" BorderThickness="1" Padding="10">
 					<DataGrid AutoGenerateColumns="False" FontSize="14" IsReadOnly="True"
+							  VerticalGridLinesBrush="{DynamicResource ClientGray300}"
+							  HorizontalGridLinesBrush="{DynamicResource ClientGray300}"
 							  ItemsSource="{Binding PagedSaleItem}"
 							  SelectedItem="{Binding  SelectedSaleItem, Mode=TwoWay}">
 						<DataGrid.Columns>
@@ -253,6 +282,22 @@
 							<DataGridTextColumn Header="Quanity" Binding="{Binding Quantity}" Width="*" />
 							<DataGridTextColumn Header="Unit Price" Binding="{Binding UnitPrice}" Width="*" />
 							<DataGridTextColumn Header="Total" Binding="{Binding Total}" Width="*" />
+							<DataGridTemplateColumn Header="Action" Width="Auto">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
+											<Button Content="Delete"
+													FontSize="10"
+													Foreground="{DynamicResource ClientTextLight}"
+													Padding="5,2"
+													Background="{DynamicResource ClientDangerColor}"
+													Command="{Binding Path=((viewmodels:SalePageViewModel)DataContext).RemoveSaleItemBySKUCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+CommandParameter="{Binding SKU}"/>
+										</StackPanel>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+
 						</DataGrid.Columns>
 					</DataGrid>
 				</Border>
@@ -261,7 +306,7 @@
 							Margin="0,10,0,0"
 							HorizontalAlignment="Right"
 							Spacing="10">
-					<Button Content="Prev" Command="{Binding PreviousPageCommand}" />
+					<Button Content="Back" Command="{Binding PreviousPageCommand}" />
 					<TextBlock Text="{Binding CurrentPage}" VerticalAlignment="Center"/>
 					<TextBlock Text=" / " VerticalAlignment="Center"/>
 					<TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center"/>
@@ -270,7 +315,7 @@
 			</Grid>
 
 			<!-- Payment Section -->
-			<Border Grid.Row="2" Grid.Column="1" BoxShadow="0 3 8 0 #3D000000" CornerRadius="8" Padding="16">
+			<Border Grid.Row="2" Grid.Column="1" BorderBrush="{DynamicResource ClientPrimaryColor}" BorderThickness="1" Padding="16">
 				<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="10">
 					<TextBlock Text="Payment " Grid.Row="0" FontSize="16" FontFamily="{DynamicResource DmBold}" Foreground="Black" />
 					<Grid Grid.Row="1" ColumnDefinitions="Auto,*" ColumnSpacing="10">
@@ -281,36 +326,70 @@
 						<TextBlock Text="Change" Classes="UserForm" Grid.Column="0" VerticalAlignment="Center" />
 						<TextBox Text="{Binding Change, StringFormat='₱{0:N2}'}" Grid.Column="1" HorizontalAlignment="Stretch" Classes="UserForm" IsReadOnly="True" />
 					</Grid>
-					<Button Content="Complete Sale" Grid.Row="3" Classes="primary" Command="{Binding CompleteSaleCommand}" HorizontalAlignment="Stretch" />
+					<Button Content="Process Invoice" Grid.Row="3" Classes="primary" Command="{Binding CompleteSaleCommand}" HorizontalAlignment="Stretch" />
 				</Grid>
 			</Border>
 
 			<!-- Summary Section -->
-			<Border Grid.Row="2" Grid.Column="0" CornerRadius="8" Padding="16" BorderBrush="{DynamicResource Gray200}" BorderThickness="2">
-				<Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto" VerticalAlignment="Center">
-					<TextBlock Grid.Row="0" Grid.Column="0" Text="Total Items"
-							   FontFamily="{DynamicResource DmBold}"
-							   Foreground="Black"
-							   FontSize="16"
-							   HorizontalAlignment="Center"/>
-					<TextBlock Grid.Row="0" Grid.Column="1" Text="Total Amount"
-							   FontFamily="{DynamicResource DmBold}"
-							   Foreground="Black"
-							   FontSize="16"
-							   HorizontalAlignment="Center"/>
+			<Border Grid.Row="2" Grid.Column="0"
+        Padding="16"
+	BorderBrush="{DynamicResource ClientPrimaryColor}" BorderThickness="1"
+        Background="Transparent"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Center">
+				<Grid ColumnSpacing="16"
+					  HorizontalAlignment="Stretch">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
 
-					<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding TotalQuantity}"
-							   FontSize="20"
-							   HorizontalAlignment="Center"
-							   Margin="0,5,0,0"/>
-					<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TotalAmount, StringFormat='₱{0:N2}'}"
-							   Foreground="{DynamicResource SuccessBrush}"
-							   FontFamily="{DynamicResource DmBold}"
-							   FontSize="20"
-							   HorizontalAlignment="Center"
-							   Margin="0,5,0,0"/>
+					<!-- Total Items -->
+					<Border Background="#F5F5F5"
+							CornerRadius="8"
+							Padding="12"
+							BorderBrush="#CCC"
+							BorderThickness="1"
+							Grid.Column="0">
+						<StackPanel HorizontalAlignment="Center">
+							<TextBlock Text="Total Items"
+									   FontFamily="{DynamicResource DmBold}"
+									   FontSize="16"
+									   Foreground="Black"
+									   HorizontalAlignment="Center" />
+							<TextBlock Text="{Binding TotalQuantity}"
+									   FontSize="24"
+									   FontWeight="Bold"
+									   Margin="0,5,0,0"
+									   HorizontalAlignment="Center" />
+						</StackPanel>
+					</Border>
+
+					<!-- Total Amount -->
+					<Border Background="#F5F5F5"
+							CornerRadius="8"
+							Padding="12"
+							BorderBrush="#CCC"
+							BorderThickness="1"
+							Grid.Column="1">
+						<StackPanel HorizontalAlignment="Center">
+							<TextBlock Text="Total Amount"
+									   FontFamily="{DynamicResource DmBold}"
+									   FontSize="16"
+									   Foreground="Black"
+									   HorizontalAlignment="Center" />
+							<TextBlock Text="{Binding TotalAmount, StringFormat='₱{0:N2}'}"
+									   FontSize="24"
+									   FontWeight="Bold"
+									   Margin="0,5,0,0"
+									   Foreground="{DynamicResource SuccessBrush}"
+									   HorizontalAlignment="Center" />
+						</StackPanel>
+					</Border>
 				</Grid>
 			</Border>
+
+
 		</Grid>
 		</StackPanel>
 

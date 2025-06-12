@@ -15,117 +15,68 @@
 		<x:Double x:Key="DataGridSortIconMinWidth">0</x:Double>
 	</UserControl.Resources>
 	<UserControl.Styles>
-		
-
-		<Style Selector="DataGridColumnHeader">
-			<Setter Property="FontSize" Value="8"/>
-			<Setter Property="FontWeight" Value="Bold"/>
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="Foreground" Value="#65758c"/>
-
-			<Setter Property="Padding" Value="8"/>
-			<Setter Property="HorizontalContentAlignment" Value="Center"/>
-			
-		</Style>
-		<Style Selector="DataGrid TextBlock">
-			<Setter Property="TextAlignment" Value="Center"/>
-		</Style>
-		<Style Selector="DataGridCell">
-			<Setter Property="FontSize" Value="10"></Setter>
-			<Setter Property="FontFamily" Value="{DynamicResource DmRegular}"></Setter>
-
-		</Style>
-		<Style Selector="Button">
-			<Setter Property="Padding" Value="5"/>
-			<Setter Property="FontSize" Value="12"/>
-		</Style>
 
 		<Style Selector="Button.danger">
-			<Setter Property="Background" Value="#FF2C2C"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="Background" Value="{DynamicResource ClientDangerColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientTextLight}"/>
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
 
-		<Style Selector="TextBlock">
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="FontSize" Value="10"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
-			
+		<Style Selector="Button.secondary">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientDangerColor}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource ClientDangerColor }"/>
+
+
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
-		
-		<Style Selector="TextBlock.UserForm">
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="FontSize" Value="10"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
-			<Setter Property="Margin" Value="0,0,0,8"></Setter>
-			
+		<Style Selector="Button.tertiary">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientPrimaryColor}"/>
+
+
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
-		<Style Selector="TextBox.UserForm">
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="FontSize" Value="10"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
-			<Setter Property="Margin" Value="0,0,0,8"></Setter>
-			<Setter Property="VerticalContentAlignment" Value="Center"/>
-			<Setter Property="Padding" Value="5,0,0,0"/>
-		</Style>
+
+
 
 		<Style Selector="Button.success">
-			<Setter Property="Background" Value="{DynamicResource SafeClr}"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="Background" Value="{DynamicResource ClientSafeColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientTextLight}"/>
 			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
 
-		
+
 		<Style Selector="Button.primary">
-			<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="Background" Value="{DynamicResource ClientPrimaryColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientTextLight}"/>
 			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		</Style>
 		<Style Selector="Button.Clear">
 			<Setter Property="Background" Value="{DynamicResource PrimWhite}"/>
-			
+
 			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
-		
-		<Style Selector="TextBox">
-			<Setter	Property="Height" Value="20"></Setter>
-			
-			<Setter	Property="MinHeight" Value="15"></Setter>
-			<Setter Property="BorderBrush" Value="{DynamicResource Gray200}"/>
-			<Setter Property="Padding" Value="0"/>
-			<Setter Property="FontSize" Value="8"/>
-			<Setter Property="CornerRadius" Value="3"></Setter>
-	
-		</Style>
-		<Style Selector="TextBox:pointerover">
-			<Setter Property="BorderBrush" Value="{DynamicResource AccentClr}"/>
-		</Style>
 
-		<Style Selector="DataGridColumnHeader /template/ fa|FontIcon#SortIcon">
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
-			<Setter Property="FontSize" Value="10"/>
 
-		</Style>
-		<Style Selector="DataGridColumnHeader:sortascending /template/ fa|FontIcon#SortIcon">
-			
-			<Setter Property="FontSize" Value="10"/>
-		</Style>
 
-		<Style Selector="DataGridColumnHeader:sortdescending /template/ fa|FontIcon#SortIcon">
-			<Setter Property="FontSize" Value="10"/>
 
-		</Style>
-		
-		
-		
-		
+
 
 	</UserControl.Styles>
 
@@ -153,10 +104,13 @@
 			
 		</StackPanel>
 
-		<Grid ColumnDefinitions="3*,*">
-			<Border BoxShadow="0 3 8 0 #3D000000"  Grid.Column="0" Margin="20"  CornerRadius="10">
-		<DataGrid 
-				
+		<Grid ColumnDefinitions="*,3*">
+			<Border BorderBrush="{DynamicResource ClientPrimaryColor}"
+						 BorderThickness="1"  Grid.Column="1" Margin="20" >
+		<DataGrid
+				CanUserResizeColumns="True"
+							  VerticalGridLinesBrush="{DynamicResource ClientGray300}"
+							  HorizontalGridLinesBrush="{DynamicResource ClientGray300}"
 				  
                   ItemsSource="{Binding PagedUser}"
                   AutoGenerateColumns="False"
@@ -184,8 +138,9 @@
 				</Border>
 
 
-			<Grid Grid.Column="1">
-				<Border  CornerRadius="10" BoxShadow="0 3 8 0 #3D000000"
+			<Grid Grid.Column="0">
+				<Border BorderBrush="{DynamicResource ClientPrimaryColor}"
+						 BorderThickness="1"
 >
 					<Grid RowDefinitions="Auto, * ,Auto,*">
 						
@@ -245,20 +200,14 @@
 						</Grid>
 
 						<!-- Buttons Row -->
-						<Grid Grid.Row="2" Margin="5,10" HorizontalAlignment="Stretch">
-							<Grid.ColumnDefinitions>
-								<!-- Define each column separately to make them all equally sized -->
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="*" />
-							</Grid.ColumnDefinitions>
-							<Button Height="25" FontSize="10" Classes="success" Grid.Column="0" Content="Add" Command="{Binding SubmitCommand}" HorizontalAlignment="Stretch" />
-							<Button Height="25" FontSize="10" Classes="primary" Grid.Column="1" Content="Edit" Command="{Binding EditUserCommand}" HorizontalAlignment="Stretch" /> 
-							<Button Height="25" FontSize="10" Classes="danger" Grid.Column="2" Content="Delete" Command="{Binding DeleteUserCommand}" HorizontalAlignment="Stretch"  />
+						<Grid Grid.Row="2" Margin="5,10" HorizontalAlignment="Stretch" RowDefinitions="*,*,*">
+
+							<Button Margin="0,0,0,5" Height="25" FontSize="10" Classes="primary" Grid.Row="0" Content="Save"  Command="{Binding SubmitCommand}"  HorizontalAlignment="Stretch" />
+							<Button Margin="0,0,0,5" Height="25" FontSize="10" Classes="secondary" Grid.Row="1" Content="Delete"  Command="{Binding DeleteUserCommand}" HorizontalAlignment="Stretch"  />
+							<Button Height="25" FontSize="10" Classes="tertiary" Grid.Row="2" Content="Edit"  Command="{Binding EditUserCommand}" HorizontalAlignment="Stretch" />
+
 						</Grid>
-						<Grid  Grid.Row="3" Margin="5,0,5,10"  >
-							<Button HorizontalAlignment="Stretch" Height="25" FontSize="11" Classes="Clear" Grid.Column="0" Content="Clear" Command="{Binding ClearUserFormCommand}"/>
-						</Grid>
+						
 						
 	
 					</Grid>
