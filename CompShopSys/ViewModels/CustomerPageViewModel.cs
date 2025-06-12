@@ -48,7 +48,7 @@ namespace TechShopMS.ViewModels
         [ObservableProperty] private string email;
         [ObservableProperty] private string address;
         [ObservableProperty] private DateTime dateCreated;
-        [ObservableProperty] private bool isActive;
+        [ObservableProperty] private bool isActive = true;
 
 
         #endregion
