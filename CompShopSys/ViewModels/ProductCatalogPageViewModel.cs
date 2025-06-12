@@ -23,11 +23,12 @@ using System.Threading.Tasks;
 
 namespace TechShopMS.ViewModels
 {
-    public partial class InventoryPageViewModel : ViewModelBase
+    public partial class ProductCatalogPageViewModel : ViewModelBase
     {
         private readonly ProductDbManager _dbManager;
+        // I will add a listbox
 
-        public InventoryPageViewModel()
+        public ProductCatalogPageViewModel()
         {
             _dbManager = new ProductDbManager("Data Source=data/ProductDB.db");
             LoadProducts();
@@ -471,22 +472,36 @@ namespace TechShopMS.ViewModels
             var box = MessageBoxManager.GetMessageBoxStandard(title, message, ButtonEnum.Ok);
             await box.ShowAsync();
         }
+        //partial void OnSelectedProductChanged(Product value)
+        //{
+        //    if (value is not null)
+        //    {
+        //        Id = value.Id;
+        //        Sku = value.SKU;
+        //        Name = value.ProductName;
+        //        Category = value.Category;
+        //        Brand = value.Brand;
+        //        Description = value.Description;
+        //        ImagePath = value.ImagePath;
+        //        Price = value.Price;
+        //        Quantity = value.Quantity;
+        //    }
+
+        //    Debug.WriteLine(value.ImagePath);
+        //}
         partial void OnSelectedProductChanged(Product value)
         {
-            if (value is not null)
-            {
-                Id = value.Id;
-                Sku = value.SKU;
-                Name = value.ProductName;
-                Category = value.Category;
-                Brand = value.Brand;
-                Description = value.Description;
-                ImagePath = value.ImagePath;
-                Price = value.Price;
-                Quantity = value.Quantity;
-            }
+            Id = value?.Id ?? default;
+            Sku = value?.SKU ?? string.Empty;
+            Name = value?.ProductName ?? string.Empty;
+            Category = value?.Category ?? string.Empty;
+            Brand = value?.Brand ?? string.Empty;
+            Description = value?.Description ?? string.Empty;
+            ImagePath = value?.ImagePath ?? string.Empty;
+            Price = value?.Price ?? default;
+            Quantity = value?.Quantity ?? default;
 
-            Debug.WriteLine(value.ImagePath);
+            Debug.WriteLine(value?.ImagePath ?? "No image path available");
         }
         #endregion
     }

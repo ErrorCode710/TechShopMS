@@ -1,0 +1,197 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:viewmodels="using:TechShopMS.ViewModels"
+             x:DataType="viewmodels:ProductCatalogPageViewModel"
+             x:Class="TechShopMS.Views.ProductCatalogPageView"
+             xmlns:fa="using:FluentAvalonia.UI.Controls">
+
+	<UserControl.Resources>
+		<x:Double x:Key="DataGridSortIconMinWidth">0</x:Double>
+	</UserControl.Resources>
+
+	<Grid RowDefinitions="Auto,*" Margin="20">
+		<!-- Search Section -->
+		<StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,0,15"
+                    Spacing="10">
+			<TextBox Watermark="Search users..."
+                     Text="{Binding SearchQuery, Mode=TwoWay}"
+                     Width="300"
+                     FontSize="12"
+                     HorizontalAlignment="Left"/>
+
+			<TextBlock Text="{Binding CurrentPage}" />
+			<TextBlock Text=" / " />
+			<TextBlock Text="{Binding TotalPages}" />
+			<Button Content="Prev" Command="{Binding PreviousPageCommand}" />
+			<Button Content="Next" Command="{Binding NextPageCommand}" />
+		</StackPanel>
+
+		<!-- Main Content Grid -->
+		<Grid Grid.Row="1" ColumnDefinitions="3*,*" >
+			<!-- DataGrid Section -->
+			<Border BoxShadow="0 3 8 0 #3D000000" Grid.Column="0" Margin="0" CornerRadius="10">
+				<ScrollViewer VerticalScrollBarVisibility="Visible">
+					<DataGrid ItemsSource="{Binding PagedProducts}"
+                              AutoGenerateColumns="False"
+                              SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                              VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              FontSize="16"
+                              GridLinesVisibility="All"
+                              FontFamily="{DynamicResource DmRegular}"
+                              IsReadOnly="True"
+                              x:Name="UserGrid">
+
+						<DataGrid.Columns>
+							<DataGridTemplateColumn Header="Image" Width="100">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<Image Source="{Binding ImageUri}" Width="80" Height="80" Stretch="Uniform"/>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							<DataGridTextColumn Header="Id" Binding="{Binding Id}" IsVisible="True" />
+							<DataGridTextColumn Header="SKU" Binding="{Binding SKU}" />
+							<DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" Width="*" />
+							<DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="*" />
+							<DataGridTextColumn Header="Brand" Binding="{Binding Brand}" Width="*" />
+							<DataGridTextColumn Header="Price" Width="*">
+								<DataGridTextColumn.Binding>
+									<Binding Path="Price" StringFormat='₱{0:N2}' />
+								</DataGridTextColumn.Binding>
+							</DataGridTextColumn>
+							<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" />
+							<DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" />
+							<DataGridTextColumn Header="Image Path" Binding="{Binding ImagePath}" Width="*" IsVisible="False" />
+						</DataGrid.Columns>
+					</DataGrid>
+				</ScrollViewer>
+			</Border>
+
+			<Grid  Grid.Row="1" Grid.Column="1" >
+				<Border  CornerRadius="10"
+						 BoxShadow="0 3 8 0 #3D000000"
+						 MaxHeight="600"
+						 VerticalAlignment="Center"
+						
+>
+					<Grid RowDefinitions="Auto, Auto, Auto, Auto">
+
+						<TextBlock Grid.Row="0"
+								   Text="Enter Product Details"
+								   HorizontalAlignment="Center"
+								   Margin="0,10,0,0"
+								   FontSize="14"
+								   FontFamily="{DynamicResource DmMedium}"
+								   Foreground="{DynamicResource PrimBlack}"/>
+
+						<!-- User Input Fields -->
+						<Grid Grid.Row="1"
+							  Margin="10"
+							  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+							  ColumnDefinitions="Auto,*">
+							<!-- Hidden Product ID -->
+
+
+							<!-- SKU -->
+							<TextBlock Text="SKU:" Classes="UserForm" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+							<TextBox Classes="UserForm" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"
+									 Text="{Binding Sku, Mode=TwoWay}" />
+
+							<!-- Product Name -->
+							<TextBlock Text="Product Name:" Classes="UserForm" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+							<TextBox Classes="UserForm" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"
+									 Text="{Binding Name, Mode=TwoWay}" />
+
+							<!-- Category -->
+							<TextBlock Text="Category:" Classes="UserForm" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+							<TextBox Classes="UserForm" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch"
+									 Text="{Binding Category, Mode=TwoWay}" />
+
+							<!-- Brand -->
+							<TextBlock Text="Brand:" Classes="UserForm" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+							<TextBox Classes="UserForm" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch"
+									 Text="{Binding Brand, Mode=TwoWay}" />
+
+							<!-- Price -->
+							<TextBlock Text="Price:" Classes="UserForm" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+							<NumericUpDown Classes="UserForm" HorizontalAlignment="Stretch"
+										   Grid.Row="4"
+										   Grid.Column="1"
+										   FontSize="12"
+										   Minimum="0"
+										   Maximum="100000"
+										   Increment="1"
+										   Padding="5,0"
+										   Value="{Binding Price, Mode=TwoWay}" />
+
+							<!-- Quantity -->
+							<TextBlock Text="Quantity:" Classes="UserForm" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
+							<NumericUpDown
+										FontSize="12"
+										   Grid.Row="5"
+										   Padding="5,0"
+										   Grid.Column="1"
+										   HorizontalAlignment="Stretch"
+										   Minimum="0"
+										   Maximum="1000"
+										   Increment="1"
+										   Value="{Binding Quantity, Mode=TwoWay}" >
+								<NumericUpDown.Resources>
+
+								</NumericUpDown.Resources>
+
+							</NumericUpDown>
+
+							<!-- Description -->
+							<TextBlock Text="Description:" Classes="UserForm" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" />
+							<TextBox Classes="UserForm" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch"
+									 AcceptsReturn="True" MaxLines="3"
+									 Text="{Binding Description, Mode=TwoWay}" />
+
+							<!-- Image Path -->
+							<TextBlock Text="Image Path:" Classes="UserForm" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" />
+
+							<StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" Spacing="5">
+
+
+								<Button Content="Browse..."
+										Command="{Binding AddPictureCommand}"
+										CommandParameter="{Binding $self}"/>
+							</StackPanel>
+
+							<TextBox  Classes="UserForm" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch"  Text="{Binding Id, Mode=OneWay}" IsVisible="False"/>
+
+						</Grid>
+
+						<!-- Buttons Row -->
+						<Grid Grid.Row="2" Margin="5,10" HorizontalAlignment="Stretch">
+							<Grid.ColumnDefinitions>
+								<!-- Define each column separately to make them all equally sized -->
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+								
+							</Grid.ColumnDefinitions>
+							<Button Height="25" FontSize="10" Classes="success" Grid.Column="0" Content="Save"  HorizontalAlignment="Stretch" Command="{Binding AddProductCommand}"  />
+							<Button Height="25" FontSize="10" Classes="primary" Grid.Column="1" Content="Edit"  HorizontalAlignment="Stretch" Command="{Binding EditProductCommand}" />
+							
+						</Grid>
+						
+
+
+					</Grid>
+				</Border>
+			</Grid>
+
+
+
+
+		
+		</Grid>
+	</Grid>
+</UserControl>

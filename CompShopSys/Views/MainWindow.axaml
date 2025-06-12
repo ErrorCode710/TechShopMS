@@ -15,109 +15,130 @@
 
 	<Grid RowDefinitions="Auto, *">
 		<Border Grid.Row="0" Background="{DynamicResource PrimBlack}">
-			<TextBlock Foreground="{DynamicResource PrimWhite}" Classes="Pane" Text="Computer Shop Management System"
-                       VerticalAlignment="Center" Margin="10 10"></TextBlock>
+			<TextBlock Foreground="{DynamicResource PrimWhite}" Classes="Pane" Text="Tech Supplies and Computer Store"
+                       VerticalAlignment="Center" Margin="10 10"/>
 		</Border>
+
 		<SplitView Grid.Row="1"
                    IsPaneOpen="True"
                    OpenPaneLength="200"
-				   
-                   PaneBackground="{DynamicResource ClientBaseColor}"
-                   Background="{DynamicResource ClientBaseColor}"
+                   PaneBackground="{DynamicResource ClientSidebarColor}"
+                  
                    CompactPaneLength="48"
                    DisplayMode="CompactInline">
+
 			<SplitView.Pane>
 				<Grid RowDefinitions="*,Auto">
-					<StackPanel Grid.Row="0" Spacing="5" Margin="5">
-						<ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedListItem}">
+					<!-- REPLACED StackPanel WITH Grid FOR CENTERING -->
+					<Grid Grid.Row="0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<ListBox Grid.Row="1" Grid.Column="1"
+								 ItemsSource="{Binding Items}"
+								 SelectedItem="{Binding SelectedListItem}"
+								 VerticalAlignment="Center"
+								 HorizontalAlignment="Center"
+								 >
 							<ListBox.Styles>
+								
+								<Style Selector="ListBoxItem:pointerover PathIcon">
+									<Setter Property="Foreground" Value="{DynamicResource ClientTextDark}"/>
+								</Style>
+								
+
+								<Style Selector="ListBoxItem:selected PathIcon">
+									<Setter Property="Foreground" Value="{DynamicResource ClientTextDark}"/>
+								</Style>
+								
 								<Style Selector="ListBoxItem">
-									<Setter Property="Background" Value="{DynamicResource ClientBaseColor}"/>
-									<Setter Property="Foreground" Value="Black"/>
+									<Setter Property="Background" Value="{DynamicResource ClientSidebarColor}"/>
+									<Setter Property="Foreground" Value="{DynamicResource ClientTextLight}"/>
 									<Setter Property="Padding" Value="10"/>
 								</Style>
 								<Style Selector="ListBoxItem:hover">
-									<Setter Property="Background" Value="{DynamicResource ClientGray100}"/>
-									<Setter Property="Foreground" Value="Black"/>
+									<Setter Property="Background" Value="{DynamicResource ClientGray400}"/>
+									<Setter Property="Foreground" Value="{DynamicResource ClientTextDark}"/>
+								
 								</Style>
 								<Style Selector="ListBoxItem:selected">
-									<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
-									<Setter Property="Foreground" Value="Black"/>
+									<Setter Property="Background" Value="{DynamicResource ClientAccentColor}"/>
+									
 									
 								</Style>
 								<Style Selector="ListBoxItem:selected /template/ ContentPresenter">
-
-									<Setter Property="Background" Value="{DynamicResource ClientGray100}"/>
-									<Setter Property="Foreground" Value="Black"/>
+									<Setter Property="Background" Value="{DynamicResource ClientTextLight}"/>
+									
+									<Setter Property="BorderBrush" Value="{DynamicResource ClientSafeColor}"/>
+									<Setter Property="BorderThickness" Value="4,0,0,0"/>
 								</Style>
 								<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
 									<Setter Property="Background" Value="{DynamicResource ClientGray100}"/>
-
 									<Setter Property="Foreground" Value="Black"/>
 								</Style>
 								
 								<Style Selector="ListBoxItem:focus">
 									<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
 									<Setter Property="Foreground" Value="White"/>
+									
 								</Style>
-
 								<Style Selector="StackPanel.isEnabled">
 									<Setter Property="Opacity" Value="0.5" />
 								</Style>
 								<Style Selector="StackPanel.isEnabledNo">
 									<Setter Property="Opacity" Value="1" />
 								</Style>
-								
 							</ListBox.Styles>
+
 							<ListBox.ItemTemplate>
 								<DataTemplate DataType="{x:Type vm:ListItemTemplate}">
-									<StackPanel Spacing="15" 
-												Orientation="Horizontal" 
+									<StackPanel Spacing="15" Orientation="Horizontal"
 												IsEnabled="{Binding IsEnabled}"
-												Classes.isEnabled="{Binding !IsEnabled }"
-												Classes.isEnabledNo="{Binding IsEnabled }"
-												
-												>
-										
-
-										<PathIcon Data="{Binding ListItemIcon}"></PathIcon>
-										<TextBlock Text="{Binding Label}"
-												   ></TextBlock>
-										
+												Classes.isEnabled="{Binding !IsEnabled}"
+												Classes.isEnabledNo="{Binding IsEnabled}">
+										<PathIcon Data="{Binding ListItemIcon}" Foreground="{DynamicResource ClientTextLight}" />
+										<TextBlock Text="{Binding Label}"/>
 									</StackPanel>
-									
 								</DataTemplate>
 							</ListBox.ItemTemplate>
 						</ListBox>
-					</StackPanel>
+					</Grid>
 
-					<Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto" Margin="5" VerticalAlignment="Center">
-						<Border Width="30" Height="30" CornerRadius="40" ClipToBounds="True" Grid.Column="0">
-							<Image Source="/Assets/avalonia-logo.ico" VerticalAlignment="Center"/>
-						</Border>
+					<!-- USER INFO PANEL -->
+					<Grid Grid.Row="1" ColumnDefinitions="auto" Margin="5" >
+						
 
-						<StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
-							<TextBlock Text="{Binding FullName}" FontSize="12" Foreground="{DynamicResource PrimWhite}"/>
-							<TextBlock Text="{Binding Email}" FontSize="8" Foreground="{DynamicResource Gray200}"/>
-						</StackPanel>
+						
+						<Button Grid.Column="1" MinWidth="190" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"> Log Out</Button>
 
-						<PathIcon Margin="0,0,0,0" Foreground="{DynamicResource Gray200}" Grid.Column="2" Data="{StaticResource SignOutRegular}"/>
+						
 					</Grid>
 				</Grid>
 			</SplitView.Pane>
+
 			<SplitView.Content>
 				<Border CornerRadius="12 0 0 0" Background="{DynamicResource PrimWhite}">
 					<StackPanel>
-						<Border Padding="10">
+						<Border Padding="10" BorderBrush="{DynamicResource ClientSidebarColor}" BorderThickness="1">
 							<DockPanel>
-								<TextBlock Text="{Binding HeaderLabel}" FontWeight="Bold" FontSize="20" Foreground="{DynamicResource PrimBlack}" DockPanel.Dock="Left"/>
-								<TextBlock Text="{Binding UserRoleDisplay}" FontSize="14" Foreground="{DynamicResource PrimBlack}" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+								<TextBlock Text="{Binding HeaderLabel}" FontWeight="Bold" FontSize="24" Foreground="{DynamicResource PrimBlack}" DockPanel.Dock="Left"/>
+								<TextBlock FontSize="24" FontWeight="Bold" Foreground="{DynamicResource PrimBlack}" HorizontalAlignment="Right" DockPanel.Dock="Right">
+									<TextBlock.Text>
+										<Binding Path="FullName" StringFormat="Hello, {0}"/>
+									</TextBlock.Text>
+								</TextBlock>
 							</DockPanel>
 						</Border>
-						
-						<TransitioningContentControl Content="{Binding CurrentPage}"
-												   Foreground="{DynamicResource PrimBlack}" />
-							
+
+						<TransitioningContentControl Content="{Binding CurrentPage}" Foreground="{DynamicResource PrimBlack}" />
 					</StackPanel>
 				</Border>
 			</SplitView.Content>

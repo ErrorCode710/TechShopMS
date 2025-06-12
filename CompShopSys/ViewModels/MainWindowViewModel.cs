@@ -57,7 +57,7 @@ namespace TechShopMS.ViewModels
 
         public void SetUpNavigationItems() {
             //Items.Add(new ListItemTemplate(typeof(HomePageViewModel), "HomeRegular"));
-            Items.Add(new ListItemTemplate(typeof(InventoryPageViewModel), "InventoryRegular"));
+            Items.Add(new ListItemTemplate(typeof(ProductCatalogPageViewModel), "InventoryRegular"));
             Items.Add(new ListItemTemplate(typeof(SalePageViewModel), "SalesRegular"));
             Items.Add(new ListItemTemplate(typeof(CustomerPageViewModel), "CustomerRegular"));
             Items.Add(new ListItemTemplate(typeof(ReportsPageViewModel), "ReportRegular"));
@@ -78,7 +78,7 @@ namespace TechShopMS.ViewModels
       //  public ObservableCollection<ListItemTemplate> Items { get; } = new()
       //{
       //    new ListItemTemplate(typeof(HomePageViewModel), "HomeRegular"),
-      //    new ListItemTemplate(typeof(InventoryPageViewModel), "InventoryRegular"),
+      //    new ListItemTemplate(typeof(ProductCatalogPageViewModel), "InventoryRegular"),
       //    new ListItemTemplate(typeof(SalesPageViewModel), "SalesRegular"),
       //    new ListItemTemplate(typeof(CustomerPageViewModel), "CustomerRegular"),
       //    new ListItemTemplate(typeof(ReportsPageViewModel), "ReportRegular"),

@@ -88,6 +88,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\ProductCatalogPageView.axaml.cs">
+      <DependentUpon>ProductCatalogPageView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SalePageView.axaml.cs">
       <DependentUpon>SalePageView.axaml</DependentUpon>
     </Compile>

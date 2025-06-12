@@ -5,11 +5,11 @@ using TechShopMS.ViewModels;
 
 namespace TechShopMS.Views;
 
-public partial class InventoryPageView : UserControl
+public partial class ProductCatalogPageView : UserControl
 {
-    public InventoryPageView()
+    public ProductCatalogPageView()
     {
         InitializeComponent();
-        DataContext = new InventoryPageViewModel();
+        DataContext = new ProductCatalogPageViewModel();
     }
 }
