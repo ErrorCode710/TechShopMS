@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechShopMS.Views;
 
 namespace TechShopMS.ViewModels
 {
@@ -46,6 +47,30 @@ namespace TechShopMS.ViewModels
         [ObservableProperty] private ObservableCollection<Product> products = new();
         [ObservableProperty] private ObservableCollection<Product> filteredProducts = new();
         [ObservableProperty] private ObservableCollection<Product> pagedProducts = new();
+
+        public ObservableCollection<string> CategoryOptions { get; } = new()
+    {
+        "Motherboards",
+        "CPU",
+        "RAM",
+        "Storage",
+        "GPU",
+        "Power Supply",
+        "Case",
+        "Chairs/Table",
+        "Laptops",
+        "Keyboards",
+        "Mice",
+        "Monitors",
+        "Headsets",
+        "Speakers",
+        "Accessories",
+        "Budget PC",
+        "Gaming PC",
+        "Office PC",
+        "Desktops & PCs"
+
+    };
 
         [ObservableProperty] private int id;
         [ObservableProperty] private string sku;
@@ -220,7 +245,7 @@ namespace TechShopMS.ViewModels
             var box1 = MessageBoxManager.GetMessageBoxStandard("Success", $"New Product Added on Page {CurrentPage}", ButtonEnum.Ok);
             await box1.ShowAsync();
         }
-        // ERROR: WHEN DELETE IT CATCH THE ERROR OBJECCT INTERFERENCE
+        
         [RelayCommand]
         private async Task DeleteProductAsync() {
             if(userRole == "Staff")
@@ -274,6 +299,66 @@ namespace TechShopMS.ViewModels
             }
 
         }
+
+       
+        [RelayCommand]
+        private async Task DeleteProductVersion2Async(int productId)
+        {
+            if (userRole == "Staff")
+            {
+                var box = MessageBoxManager.GetMessageBoxStandard(
+                    "Access Denied",
+                    "Only Admin or Manager can delete a product.",
+                    ButtonEnum.Ok,
+                    Icon.Warning);
+                await box.ShowAsync();
+                return;
+            }
+
+            var productToDelete = Products.FirstOrDefault(p => p.Id == productId);
+            if (productToDelete == null)
+                return;
+
+            var confirmBox = MessageBoxManager.GetMessageBoxStandard(
+                "Confirm Remove",
+                $"Are you sure you want to Remove Product '{productToDelete.ProductName}'?",
+                ButtonEnum.YesNo,
+                Icon.Warning);
+
+            var result = await confirmBox.ShowAsync();
+
+            if (result == ButtonResult.Yes)
+            {
+                try
+                {
+                    _dbManager.RemoveProduct(productId);
+                    Products.Remove(productToDelete);
+
+                    var infoBox = MessageBoxManager.GetMessageBoxStandard(
+                        "Removed",
+                        "Product Removed successfully.",
+                        ButtonEnum.Ok);
+                    await infoBox.ShowAsync();
+
+                    ResetInputFields();
+
+                    LoadProducts();
+
+                    int lastPage = (int)Math.Ceiling((double)Products.Count / PageSize);
+                    LoadPage(CurrentPage);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error while deleting: {ex.Message}");
+                    var errorBox = MessageBoxManager.GetMessageBoxStandard(
+                        "Error",
+                        $"Failed to Remove Product. {ex.Message}",
+                        ButtonEnum.Ok);
+                    await errorBox.ShowAsync();
+                }
+            }
+        }
+
         [RelayCommand]
         private void ClearUserForm(){ 
             ResetInputFields();

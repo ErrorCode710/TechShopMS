@@ -11,30 +11,40 @@
 	<UserControl.Resources>
 		<x:Double x:Key="DataGridSortIconMinWidth">0</x:Double>
 	</UserControl.Resources>
-
+	<UserControl.Styles>
+		<Style Selector="DataGridRow:nth-child(odd)">
+			<Setter Property="Background" Value="{DynamicResource ClientLightGray100}"/>
+		</Style>
+	</UserControl.Styles>
 	<Grid RowDefinitions="Auto,*" Margin="20">
 		<!-- Search Section -->
 		<StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Stretch"
                     Margin="0,0,0,15"
+					
                     Spacing="10">
-			<TextBox Watermark="Search users..."
+			<TextBox Watermark="Search Items..."
                      Text="{Binding SearchQuery, Mode=TwoWay}"
-                     Width="300"
+                     Width="800"
                      FontSize="12"
                      HorizontalAlignment="Left"/>
 
-			<TextBlock Text="{Binding CurrentPage}" />
-			<TextBlock Text=" / " />
-			<TextBlock Text="{Binding TotalPages}" />
-			<Button Content="Prev" Command="{Binding PreviousPageCommand}" />
-			<Button Content="Next" Command="{Binding NextPageCommand}" />
+			<StackPanel Grid.Row="1" Orientation="Horizontal"
+							Margin="0,10,0,0"
+							HorizontalAlignment="Right"
+							Spacing="10">
+				<Button Content="Prev" Command="{Binding PreviousPageCommand}" />
+				<TextBlock Text="{Binding CurrentPage}" VerticalAlignment="Center"/>
+				<TextBlock Text=" / " VerticalAlignment="Center"/>
+				<TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center"/>
+				<Button Content="Next" Command="{Binding NextPageCommand}" />
+			</StackPanel>
 		</StackPanel>
 
 		<!-- Main Content Grid -->
-		<Grid Grid.Row="1" ColumnDefinitions="3*,*" >
+		<Grid  Grid.Row="1" ColumnDefinitions="3*,*" >
 			<!-- DataGrid Section -->
-			<Border BoxShadow="0 3 8 0 #3D000000" Grid.Column="0" Margin="0" CornerRadius="10">
+			<Border BorderBrush="{DynamicResource ClientPrimaryColor}" BorderThickness="1" Grid.Column="0" Margin="0" >
 				<ScrollViewer VerticalScrollBarVisibility="Visible">
 					<DataGrid ItemsSource="{Binding PagedProducts}"
                               AutoGenerateColumns="False"
@@ -43,6 +53,9 @@
                               HorizontalAlignment="Stretch"
                               FontSize="16"
                               GridLinesVisibility="All"
+							 CanUserResizeColumns="True"
+							  VerticalGridLinesBrush="{DynamicResource ClientGray300}"
+							  HorizontalGridLinesBrush="{DynamicResource ClientGray300}"
                               FontFamily="{DynamicResource DmRegular}"
                               IsReadOnly="True"
                               x:Name="UserGrid">
@@ -55,27 +68,54 @@
 									</DataTemplate>
 								</DataGridTemplateColumn.CellTemplate>
 							</DataGridTemplateColumn>
-							<DataGridTextColumn Header="Id" Binding="{Binding Id}" IsVisible="True" />
-							<DataGridTextColumn Header="SKU" Binding="{Binding SKU}" />
-							<DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" Width="*" />
-							<DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="*" />
-							<DataGridTextColumn Header="Brand" Binding="{Binding Brand}" Width="*" />
-							<DataGridTextColumn Header="Price" Width="*">
+							<DataGridTextColumn  Header="Id" Binding="{Binding Id}" IsVisible="false" />
+							<DataGridTextColumn Header="Unique Code" Binding="{Binding SKU}" />
+							<DataGridTextColumn Header="Item Name" Binding="{Binding ProductName}" Width="auto" />
+							<DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="auto" />
+							<DataGridTextColumn Header="Brand" Binding="{Binding Brand}" Width="auto" />
+							<DataGridTextColumn Header="Price" Width="auto">
 								<DataGridTextColumn.Binding>
 									<Binding Path="Price" StringFormat='₱{0:N2}' />
 								</DataGridTextColumn.Binding>
 							</DataGridTextColumn>
-							<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" />
+							<DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="auto" />
 							<DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" />
-							<DataGridTextColumn Header="Image Path" Binding="{Binding ImagePath}" Width="*" IsVisible="False" />
+							<DataGridTextColumn Header="Image" Binding="{Binding ImagePath}" Width="auto" IsVisible="False" />
+							
+							<DataGridTemplateColumn Width="auto">
+								<DataGridTemplateColumn.HeaderTemplate>
+									<DataTemplate>
+										<TextBlock Text="Action"
+												   TextWrapping="Wrap"
+												   TextAlignment="Center"
+												   HorizontalAlignment="Center" />
+									</DataTemplate>
+								</DataGridTemplateColumn.HeaderTemplate>
+
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="5">
+											<Button Content="Delete"
+													FontSize="10"
+													Foreground="{DynamicResource ClientTextLight}"
+													Padding="5,2"
+													Background="{DynamicResource ClientDangerColor}"
+													Command="{Binding Path=((viewmodels:ProductCatalogPageViewModel)DataContext).DeleteProductVersion2Command, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+CommandParameter="{Binding Id}"
+													 />
+										</StackPanel>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
 						</DataGrid.Columns>
 					</DataGrid>
 				</ScrollViewer>
 			</Border>
 
-			<Grid  Grid.Row="1" Grid.Column="1" >
-				<Border  CornerRadius="10"
-						 BoxShadow="0 3 8 0 #3D000000"
+			<Grid  Grid.Row="1" Grid.Column="1" Margin="20,0,0,0" >
+				<Border  
+						 BorderBrush="{DynamicResource ClientPrimaryColor}" 
+						 BorderThickness="1"
 						 MaxHeight="600"
 						 VerticalAlignment="Center"
 						
@@ -99,7 +139,7 @@
 
 
 							<!-- SKU -->
-							<TextBlock Text="SKU:" Classes="UserForm" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+							<TextBlock Text="Unique:" Classes="UserForm" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
 							<TextBox Classes="UserForm" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"
 									 Text="{Binding Sku, Mode=TwoWay}" />
 
@@ -109,9 +149,13 @@
 									 Text="{Binding Name, Mode=TwoWay}" />
 
 							<!-- Category -->
-							<TextBlock Text="Category:" Classes="UserForm" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
-							<TextBox Classes="UserForm" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch"
-									 Text="{Binding Category, Mode=TwoWay}" />
+							<TextBlock Text="Category:" Classes="UserForm" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+							<ComboBox Classes="UserForm"
+									  Grid.Row="2"
+									  Grid.Column="1"
+									  ItemsSource="{Binding CategoryOptions}"
+									  SelectedItem="{Binding Category, Mode=TwoWay}"
+									  HorizontalAlignment="Stretch"/>
 
 							<!-- Brand -->
 							<TextBlock Text="Brand:" Classes="UserForm" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
@@ -177,8 +221,8 @@
 								<ColumnDefinition Width="*" />
 								
 							</Grid.ColumnDefinitions>
-							<Button Height="25" FontSize="10" Classes="success" Grid.Column="0" Content="Save"  HorizontalAlignment="Stretch" Command="{Binding AddProductCommand}"  />
-							<Button Height="25" FontSize="10" Classes="primary" Grid.Column="1" Content="Edit"  HorizontalAlignment="Stretch" Command="{Binding EditProductCommand}" />
+							<Button Height="25" FontSize="10" Background="{DynamicResource ClientSafeColor}"  Foreground="{DynamicResource ClientTextLight}" Grid.Column="0" Content="Save"  HorizontalAlignment="Stretch" Command="{Binding AddProductCommand}" HorizontalContentAlignment="Center"  />
+							<Button Height="25" FontSize="10" Background="{DynamicResource ClientAccentColor}" Foreground="{DynamicResource ClientTextLight}" Classes="primary" Grid.Column="1" Content="Edit"  HorizontalAlignment="Stretch" Command="{Binding EditProductCommand}"  HorizontalContentAlignment="Center" />
 							
 						</Grid>
 						
