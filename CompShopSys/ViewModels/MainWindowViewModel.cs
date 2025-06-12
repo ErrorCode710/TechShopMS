@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
+using System.Linq;
 namespace TechShopMS.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
@@ -70,23 +71,19 @@ namespace TechShopMS.ViewModels
 
             Items.Add(new ListItemTemplate(typeof(UserManagementPageViewModel), "UserRegular", canAccessUserManagement));
         }
-
+        public void NavigateToCustomerPage()
+        {
+            var customerItem = Items.FirstOrDefault(i => i.ModelType == typeof(CustomerPageViewModel));
+            if (customerItem != null && customerItem.IsEnabled)
+            {
+                SelectedListItem = customerItem; // Triggers OnSelectedListItemChanged
+            }
+        }
         public void userDetailsDisplay()
         {
 
         }
-      //  public ObservableCollection<ListItemTemplate> Items { get; } = new()
-      //{
-      //    new ListItemTemplate(typeof(HomePageViewModel), "HomeRegular"),
-      //    new ListItemTemplate(typeof(ProductCatalogPageViewModel), "InventoryRegular"),
-      //    new ListItemTemplate(typeof(SalesPageViewModel), "SalesRegular"),
-      //    new ListItemTemplate(typeof(CustomerPageViewModel), "CustomerRegular"),
-      //    new ListItemTemplate(typeof(ReportsPageViewModel), "ReportRegular"),
-      //    new ListItemTemplate(typeof(UserManagementPageViewModel), "UserRegular", UserRoleDisplay == "Admin")
-
-
-
-      //};
+     
 
       
     }

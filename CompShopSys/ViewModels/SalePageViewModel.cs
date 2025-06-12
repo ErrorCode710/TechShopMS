@@ -12,6 +12,7 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using CommunityToolkit.Mvvm.Input;
 using Tmds.DBus.Protocol;
+using TechShopMS.Helper;
 
 
 namespace TechShopMS.ViewModels
@@ -21,6 +22,30 @@ namespace TechShopMS.ViewModels
         #region Fields
         //private readonly CustomerDbManager _dbManager;
         private const int PageSize = 3;
+
+        public ObservableCollection<string> CategoryOptions { get; } = new()
+    {
+        "Motherboards",
+        "CPU",
+        "RAM",
+        "Storage",
+        "GPU",
+        "Power Supply",
+        "Case",
+        "Chairs/Table",
+        "Laptops",
+        "Keyboards",
+        "Mice",
+        "Monitors",
+        "Headsets",
+        "Speakers",
+        "Accessories",
+        "Budget PC",
+        "Gaming PC",
+        "Office PC",
+        "Desktops & PCs"
+
+    };
 
         public List<bool> BooleanValues { get; set; } = new List<bool>() { true, false };
         public bool SelectedBoolean { get; set; }
@@ -36,11 +61,13 @@ namespace TechShopMS.ViewModels
 
         private Dictionary<string, int> _originalStocks = new();
         private Dictionary<string, int> _reservedStocks = new();
+
+        private readonly MainWindowViewModel _mainWindowViewModel;
         #endregion
 
         #region Observable Properties
 
-       
+
         // For Sale Interface
         [ObservableProperty] private int id;
         [ObservableProperty] private string invoiceNumber ;
@@ -144,7 +171,11 @@ namespace TechShopMS.ViewModels
 
         }
         #endregion
-
+        [RelayCommand]
+        private void NavigateToCustomer()
+        {
+            GlobalState.MainWindowViewModel?.NavigateToCustomerPage();
+        }
         #region Pagination
         public void saleItemPopulate()
         {

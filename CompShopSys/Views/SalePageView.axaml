@@ -13,63 +13,43 @@
 	<UserControl.Resources>
 		<x:Double x:Key="DataGridSortIconMinWidth">0</x:Double>
 	</UserControl.Resources>
+
 	<UserControl.Styles>
-		<Style Selector="DataGridColumnHeader">
-			<Setter Property="FontSize" Value="8"/>
-			<Setter Property="FontWeight" Value="Bold"/>
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="Foreground" Value="#65758c"/>
-
-			<Setter Property="Padding" Value="8"/>
-			<Setter Property="HorizontalContentAlignment" Value="Center"/>
-
-		</Style>
-		<Style Selector="DataGrid TextBlock">
-			<Setter Property="TextAlignment" Value="Center"/>
-		</Style>
-		<Style Selector="DataGridCell">
-			<Setter Property="FontSize" Value="10"></Setter>
-			<Setter Property="FontFamily" Value="{DynamicResource DmRegular}"></Setter>
-
-		</Style>
-		<Style Selector="Button">
-			<Setter Property="Padding" Value="5"/>
-			<Setter Property="FontSize" Value="12"/>
-		</Style>
-
 		<Style Selector="Button.danger">
-			<Setter Property="Background" Value="#FF2C2C"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="Background" Value="{DynamicResource ClientDangerColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientTextLight}"/>
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
 
-		<Style Selector="TextBlock">
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="FontSize" Value="10"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
+		<Style Selector="Button.secondary">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientDangerColor}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource ClientDangerColor }"/>
 
+
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
+		</Style>
+		<Style Selector="Button.tertiary">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientPrimaryColor}"/>
+
+
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
 
-		<Style Selector="TextBlock.UserForm">
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="FontSize" Value="10"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
-			<Setter Property="Margin" Value="0,0,0,8"></Setter>
 
-		</Style>
-		<Style Selector="TextBox.UserForm">
-			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
-			<Setter Property="FontSize" Value="10"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
-			<Setter Property="Margin" Value="0,0,0,8"></Setter>
-			<Setter Property="VerticalContentAlignment" Value="Center"/>
-			<Setter Property="Padding" Value="5,0,0,0"/>
-		</Style>
 
 		<Style Selector="Button.success">
-			<Setter Property="Background" Value="{DynamicResource SafeClr}"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="Background" Value="{DynamicResource ClientSafeColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientTextLight}"/>
 			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
@@ -77,11 +57,12 @@
 
 
 		<Style Selector="Button.primary">
-			<Setter Property="Background" Value="{DynamicResource AccentClr}"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimWhite}"/>
+			<Setter Property="Background" Value="{DynamicResource ClientPrimaryColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource ClientTextLight}"/>
 			<Setter Property="FontFamily" Value="{DynamicResource DmMedium}"/>
 			<Setter Property="Padding" Value="10,5"/>
 			<Setter Property="CornerRadius" Value="4"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		</Style>
 		<Style Selector="Button.Clear">
 			<Setter Property="Background" Value="{DynamicResource PrimWhite}"/>
@@ -91,46 +72,10 @@
 			<Setter Property="CornerRadius" Value="4"/>
 		</Style>
 
-		<Style Selector="TextBox">
-			<Setter	Property="Height" Value="20"></Setter>
-
-			<Setter	Property="MinHeight" Value="15"></Setter>
-			<Setter Property="BorderBrush" Value="{DynamicResource Gray200}"/>
-			<Setter Property="Padding" Value="0"/>
-			<Setter Property="FontSize" Value="8"/>
-			<Setter Property="CornerRadius" Value="3"></Setter>
-
+		<Style Selector="DataGridRow:nth-child(odd)">
+			<Setter Property="Background" Value="{DynamicResource ClientLightGray100}"/>
 		</Style>
-		<Style Selector="TextBox:pointerover">
-			<Setter Property="BorderBrush" Value="{DynamicResource AccentClr}"/>
-		</Style>
-
-		<Style Selector="DataGridColumnHeader /template/ fa|FontIcon#SortIcon">
-			<Setter Property="Foreground" Value="{DynamicResource PrimBlack}"/>
-			<Setter Property="FontSize" Value="10"/>
-
-		</Style>
-		<Style Selector="DataGridColumnHeader:sortascending /template/ fa|FontIcon#SortIcon">
-
-			<Setter Property="FontSize" Value="10"/>
-		</Style>
-
-		<Style Selector="DataGridColumnHeader:sortdescending /template/ fa|FontIcon#SortIcon">
-			<Setter Property="FontSize" Value="10"/>
-
-		</Style>
-
-
-		<Style Selector="DataGridColumnHeader TextBlock.Wrap">
-			<Setter Property="TextWrapping" Value="Wrap"/>
-			<Setter Property="HorizontalAlignment" Value="Center"/>
-			<Setter Property="VerticalAlignment" Value="Center"/>
-			<Setter Property="TextAlignment" Value="Center"/>
-			<Setter Property="Margin" Value="4"/>
-		</Style>
-
-		<!-- (Omitted for brevity, styles are unchanged from your original) -->
-	</UserControl.Styles>
+		</UserControl.Styles>
 
 	<StackPanel Margin="20" Spacing="10">
 		
@@ -138,7 +83,7 @@
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="10">
 			
 			<AutoCompleteBox 
-				Watermark="Search customers..."
+				Watermark="Choose a Customer"
 				Padding="2,2"
 				Width="300"
 				FontSize="12"
@@ -154,6 +99,11 @@
 							>
 				
 			</AutoCompleteBox>
+			<Button Content="Add New Customer"
+					Foreground="{DynamicResource ClientTextLight}"
+        Command="{Binding NavigateToCustomerCommand}"
+        Classes="primary"
+       />
 			
 		</StackPanel>
 
@@ -161,39 +111,81 @@
 		<Grid ColumnDefinitions="3*, 1*" RowDefinitions="Auto, *, Auto" ColumnSpacing="16" RowSpacing="10">
 
 			<!-- Invoice Section -->
-			<Border Grid.Row="0" Grid.Column="0" Background="{DynamicResource Gray200}" CornerRadius="8" Padding="16">
-				<Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="10">
-					<TextBlock Grid.Row="0" Text="Invoice" FontSize="16" FontFamily="{DynamicResource DmBold}" Foreground="Black" />
-					<Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" ColumnSpacing="10" RowSpacing="6">
-						<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-							<TextBlock Text="Invoice #:" FontFamily="{DynamicResource DmBold}" Classes="UserForm" />
-							<TextBlock Text="{Binding InvoiceNumber}" Margin="5,0" Classes="UserForm" />
-						</StackPanel>
-						<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-							<TextBlock Text="Issued On:" FontFamily="{DynamicResource DmBold}" Classes="UserForm" />
-							<TextBlock Text="{Binding IssuedOnDisplay}" Margin="5,0" Classes="UserForm" />
-						</StackPanel>
-						<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-							<TextBlock Text="Customer Name:" FontFamily="{DynamicResource DmBold}" Classes="UserForm" />
-							<TextBlock Text="{Binding CustomerName}" Margin="5,0" Classes="UserForm" />
-						</StackPanel>
-						<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-							<TextBlock Text="Phone Number:" FontFamily="{DynamicResource DmBold}" Classes="UserForm" />
-							<TextBlock Text="{Binding CustomerPhoneNo}" Margin="5,0" Classes="UserForm" />
-						</StackPanel>
-						<StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
-							<TextBlock Text="Email:" FontFamily="{DynamicResource DmBold}" Classes="UserForm" />
-							<TextBlock Text="{Binding CustomerEmail}" Margin="5,0" Classes="UserForm" />
-						</StackPanel>
-						<StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-							<TextBlock Text="Issued By:" FontFamily="{DynamicResource DmBold}" Classes="UserForm" />
-							<TextBlock Text="{Binding IssueBy}" Margin="5,0" Classes="UserForm" />
-						</StackPanel>
+			<Border Grid.Row="0" Grid.Column="0"
+        Background="{DynamicResource ClientPrimaryColor}"
+        Padding="16">
+				<StackPanel HorizontalAlignment="Center"
+							VerticalAlignment="Top"
+							Width="600"
+							Spacing="20">
+
+					<!-- Title -->
+					<TextBlock Text="Item Counter"
+							   TextAlignment="Center"
+							   HorizontalAlignment="Center"
+							   FontSize="20"
+							   FontFamily="{DynamicResource DmBold}"
+							   Foreground="{DynamicResource ClientTextLight}" />
+
+					<!-- Category and Product Inputs -->
+					<Grid ColumnDefinitions="Auto,*,Auto,*"
+						  ColumnSpacing="10"
+						  HorizontalAlignment="Center">
+
+						<!-- Category Label -->
+						<TextBlock Text="Category:"
+								   Grid.Column="0"
+								   VerticalAlignment="Center"
+								   FontFamily="{DynamicResource DmBold}"
+								   Foreground="{DynamicResource ClientTextLight}" />
+
+						<!-- Category ComboBox -->
+						<ComboBox Classes="UserForm"
+								  Grid.Column="1"
+								  Width="200"
+								  ItemsSource="{Binding CategoryOptions}"
+								SelectedItem="{Binding Category, Mode=TwoWay}"
+								  Margin="0,0,20,0"/>
+
+						<!-- Item Name Label -->
+						<TextBlock Text="Item Name:"
+								   Grid.Column="2"
+								   VerticalAlignment="Center"
+								   FontFamily="{DynamicResource DmBold}"
+								   Foreground="{DynamicResource ClientTextLight}" />
+
+						<!-- Item Name AutoCompleteBox -->
+						<AutoCompleteBox ItemsSource="{Binding FilteredProducts}"
+										 Text="{Binding ProductName, Mode=TwoWay}"
+										 SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+										 Watermark="Search Product"
+										 Classes="UserForm"
+										 Width="200"
+										 Grid.Column="3">
+							<AutoCompleteBox.ItemTemplate>
+								<DataTemplate x:DataType="models:Product">
+									<StackPanel Orientation="Horizontal" Spacing="8">
+										<TextBlock Text="{Binding ProductName}" FontWeight="Bold" Width="180" />
+										<TextBlock Text="{Binding Price, StringFormat='₱{0:F2}'}" Foreground="Green" Width="60" />
+										<TextBlock Text="{Binding Quantity, StringFormat='Stock: {0}'}" Foreground="{DynamicResource WarningBrush}" Width="80" />
+									</StackPanel>
+								</DataTemplate>
+							</AutoCompleteBox.ItemTemplate>
+						</AutoCompleteBox>
 					</Grid>
-				</Grid>
+
+					<!-- Add Item Button -->
+					<Button Content="Add Item"
+							HorizontalAlignment="Center"
+							Padding="10,6"
+							Classes="success"
+							FontFamily="{DynamicResource DmBold}"
+							Background="{DynamicResource ClientAccentBrush}"
+							Foreground="White" />
+				</StackPanel>
 			</Border>
 			<!-- Input Items Section -->
-			<Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" CornerRadius="10" BoxShadow="0 3 8 0 #3D000000" Padding="16">
+			<Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" CornerRadius="10" BoxShadow="0 3 8 0 #3D000000" Padding="16" IsVisible="False">
 				<Grid RowDefinitions="Auto, *, Auto, *">
 					<TextBlock Grid.Row="0" Text="Enter Item Details" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="14" FontFamily="{DynamicResource DmBold}" Foreground="{DynamicResource PrimBlack}" />
 					<Grid Grid.Row="1" Margin="10" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">

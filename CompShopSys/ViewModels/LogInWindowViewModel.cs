@@ -5,6 +5,7 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using TechShopMS.Helper;
 
 
 
@@ -96,6 +97,7 @@ namespace TechShopMS.ViewModels
             };
             
             mainWindow.DataContext = mainWindowVm;
+            GlobalState.MainWindowViewModel = mainWindowVm;
 
             mainWindow.Show();
             mainWindowVm.SetUpNavigationItems();
