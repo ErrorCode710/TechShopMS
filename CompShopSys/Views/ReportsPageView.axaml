@@ -50,7 +50,7 @@
 							<StackPanel> 
 								<TextBlock Text="Today's Total Sales" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
 								<TextBlock Text="{Binding DailyTotalSales, StringFormat=₱{0:N2}}"
-										   FontSize="24" FontWeight="Bold" Foreground="{DynamicResource AccentClr}"
+										   FontSize="24" FontWeight="Bold" 
 										   TextWrapping="Wrap"/>
 							</StackPanel>
 						</Border>
@@ -62,9 +62,9 @@
 								MinWidth="200"
 								Margin="20,0">
 							<StackPanel>
-								<TextBlock Text="Top Customer" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+								<TextBlock Text="Best Customer" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
 								<TextBlock Text="{Binding FrequentCustomer}" FontSize="20" FontWeight="Bold"  HorizontalAlignment="Center"
-										   Foreground="{DynamicResource DangerClr}" TextWrapping="Wrap"/>
+										   TextWrapping="Wrap"/>
 							</StackPanel>
 						</Border>
 
@@ -116,7 +116,7 @@
 								<StackPanel>
 									<TextBlock Text="Out of Stock" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
 									<TextBlock Text="{Binding OutOfStockCount}"
-											   FontSize="24" FontWeight="Bold" Foreground="{DynamicResource DangerClr}"
+											   FontSize="24" FontWeight="Bold"
 											   HorizontalAlignment="Center"/>
 								</StackPanel>
 							</Border>
@@ -130,7 +130,7 @@
 								<StackPanel>
 									<TextBlock Text="Low Stock" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
 									<TextBlock Text="{Binding LowStockCount}"
-											   FontSize="24" FontWeight="Bold" Foreground="Orange"
+											   FontSize="24" FontWeight="Bold" 
 											   HorizontalAlignment="Center"/>
 								</StackPanel>
 							</Border>
@@ -144,7 +144,7 @@
 								<StackPanel>
 									<TextBlock Text="In Stock" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
 									<TextBlock Text="{Binding InStockCount}"
-											   FontSize="24" FontWeight="Bold" Foreground="Green"
+											   FontSize="24" FontWeight="Bold" 
 											   HorizontalAlignment="Center"/>
 								</StackPanel>
 							</Border>

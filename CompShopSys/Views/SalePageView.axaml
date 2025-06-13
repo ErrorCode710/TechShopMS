@@ -315,9 +315,9 @@ CommandParameter="{Binding SKU}"/>
 			</Grid>
 
 			<!-- Payment Section -->
-			<Border Grid.Row="2" Grid.Column="1" BorderBrush="{DynamicResource ClientPrimaryColor}" BorderThickness="1" Padding="16">
-				<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="10">
-					<TextBlock Text="Payment " Grid.Row="0" FontSize="16" FontFamily="{DynamicResource DmBold}" Foreground="Black" />
+			<Border Grid.Row="0"  Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{DynamicResource ClientPrimaryColor}" BorderThickness="1" Padding="16">
+				<Grid  RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="10">
+					<TextBlock Text="Payment Section" Grid.Row="0" FontSize="16" FontFamily="{DynamicResource DmBold}" Foreground="Black" />
 					<Grid Grid.Row="1" ColumnDefinitions="Auto,*" ColumnSpacing="10">
 						<TextBlock Text="Amount ₱" Classes="UserForm" Grid.Column="0" VerticalAlignment="Center" />
 						<TextBox Text="{Binding AmountPaid}" Grid.Column="1" HorizontalAlignment="Stretch" Classes="UserForm" />
